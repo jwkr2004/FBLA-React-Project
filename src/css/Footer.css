@@ -1,0 +1,13 @@
+#Footer {
+    background-color: rgb(192, 75, 75);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 97.75%;
+    height: 80px;
+    margin: 100% 0% 0% 0%;
+    padding: 1%;
+    text-align: center;
+    border: solid 2px black;
+    overflow: hidden;
+}

@@ -1,0 +1,36 @@
+import '../css/Home.css';
+import axios from "axios"
+
+const Home = () => {
+  function SubmitForm() {
+    var data = {
+      image: document.getElementById("image").value,
+      title: document.getElementById("title").value,
+      description: document.getElementById("description").value,
+      points: document.getElementById("points").value
+    };
+    axios
+      .post('http://localhost:3001/newEvent', data)
+      .then(() => console.log(data))
+      .catch(err => {
+        console.error(err);
+      });
+  }
+  return (
+    <div className="App">
+      <form>
+        <label>Image:</label>
+        <input id="image" name="image"/>
+        <label>Event Name:</label>
+        <input id="title" name="title"/>
+        <label>Event Description:</label>
+        <input id="description" name="description"/>
+        <label>Points:</label>
+        <input id="points" name="points"/>
+        <button type={"button"} onClick={() => SubmitForm()}>Submit</button>
+      </form>
+    </div>
+  );
+}
+
+export default Home;
