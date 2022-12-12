@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-const eventsSchema = new Schema({
+const mongoose = require("mongoose")
+const EventsSchema = new mongoose.Schema({
     image: {
         type: String
     },
@@ -10,7 +10,7 @@ const eventsSchema = new Schema({
         type: String
     },
     points: {
-        type: String
+        type: Number
     }
 });
-export default model('events', eventsSchema);
+module.exports = mongoose.model('events', EventsSchema);

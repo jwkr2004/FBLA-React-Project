@@ -1,51 +1,57 @@
-var express = require("express");
-var cors = require("cors");
-var mongoose = require("mongoose");
-var bodyParser = require("body-parser");
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const passportLocalMongoose = require('passport-local-mongoose');
+const bcrypt = require("bcrypt");
+const session = require("express-session");
+const { v4: uuidv4 } = require('uuid');
+
 const app = express();
-//var session = require('express-session');
 const Login = require("./model/LoginSchema");
 const eventsSchema = require("./model/EventsSchema");
 const Students = require("./model/StudentsSchema");
-const url = "mongodb://localhost:27017/EventTrackerDB";
-mongoose.connect("mongodb://localhost:27017/EventTrackerDB")
 
-/*mongoose
+const url = "mongodb://localhost:27017/EventTrackerDB";
+
+mongoose
     .connect(url)
     .then(() => {
         console.log("Connected to the database!")
     })
-    .catch(e => {
-        console.error('Connection error', e.message)
+    .catch(err => {
+        console.error('Connection error', err.message)
     })
-*/
+
 var properties = {
-    secret: 'fihf97r2y3fyigh29g08w7p34j803h0vit',
-    cookie: {}
+    genid: function (req) {
+        return uuidv4();
+      },
+    secret: 'EuF6C2rqPh55nGyuyuAbG9hyCLmqLQNb',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000, secure: true}
 }
 
-//app.use(session(properties));
-app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(session(properties));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(
     cors({
       origin: 'http://localhost:3000',
       credentials: true,
     })
 );
-/*app.post("/test", (req, res) => {
-    const data = new LoggedIn({
-        fname: req.body.fName,
-        lname: req.body.lName,
-    });
-    data.save();
-    console.log(req.body);
-    res.end();
-});*/
 
-app.post("/newEvent", async(req, res) => {
+
+app.get("/", async(req, res) => {
+    res.end();
+});
+
+app.post("/newevent", async(req, res) => {
     const data = new eventsSchema(req.body);
-    console.log(req.body);
     console.log(data);
     await data.save();
     res.end();

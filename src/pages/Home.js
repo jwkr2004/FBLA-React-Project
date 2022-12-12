@@ -10,7 +10,7 @@ const Home = () => {
       points: document.getElementById("points").value
     };
     axios
-      .post('http://localhost:3001/newEvent', data)
+      .post('http://localhost:3001/newevent', data)
       .then(() => console.log(data))
       .catch(err => {
         console.error(err);
