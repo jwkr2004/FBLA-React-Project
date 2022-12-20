@@ -2,7 +2,8 @@ import '../css/Home.css';
 import axios from "axios"
 
 const Home = () => {
-  function SubmitForm() {
+  function SubmitForm(e) {
+    e.preventDefault();
     var data = {
       image: document.getElementById("image").value,
       title: document.getElementById("title").value,
@@ -11,14 +12,14 @@ const Home = () => {
     };
     axios
       .post('http://localhost:3001/newevent', data)
-      .then(() => console.log(data))
+      .then((res) => console.log(data, res))
       .catch(err => {
         console.error(err);
       });
   }
   return (
     <div className="App">
-      <form>
+      {/*<form onSubmit={e => SubmitForm(e)}>
         <label>Image:</label>
         <input id="image" name="image"/>
         <label>Event Name:</label>
@@ -27,8 +28,9 @@ const Home = () => {
         <input id="description" name="description"/>
         <label>Points:</label>
         <input id="points" name="points"/>
-        <button type={"button"} onClick={() => SubmitForm()}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
+      */}
     </div>
   );
 }

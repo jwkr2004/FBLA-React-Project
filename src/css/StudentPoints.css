@@ -1,0 +1,61 @@
+#StudentPoints {
+    padding: 0%;
+    margin-bottom: 200px;
+    margin-top: 200px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border: 2px solid black;
+}
+.Box46{
+    float: right;
+    
+    padding: 5px;
+    text-align: center;
+    background-color: #C04B4B;
+    border-radius: 10px;
+    width: 300px;
+    height: 550px;
+    color: white;
+    padding: 2%;
+    margin-right: 100px;
+    margin-bottom: 100px;
+   
+}
+.Box45{
+    float: left;
+    text-align: center;
+    background-color: #C04B4B;
+    border-radius: 10px;
+    width: 400px;
+    height: auto;
+    color: white;
+    padding: 2%;
+    margin-left: 300px ;
+   
+}
+.pushinp{
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 280px;
+    height: 40px;
+    color: black;
+    padding: 5% 0% 0% 0%;
+    margin: 4%;
+    font-size: 20px;
+}
+#leader{
+    float: right;
+    padding: 0% 13% 0% 0%;
+    margin-top:100px ;
+}
+#_points{
+padding: 5% 0% 0% 30%;
+
+
+}
+#notpushinp{
+    font-size: 3em;
+    
+}
