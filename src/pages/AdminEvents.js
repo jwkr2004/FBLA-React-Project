@@ -11,9 +11,9 @@ function AdminEvents() {
             </div>
             <div className='Boxs'> 
                 <img src='' alt='StudentImg' width='100%' height='100%'></img>
-                <p className='BoxText'>Event Name: Michael Jackson Concert</p>
-                <p className='BoxText'>Point Amount: 420</p>
-                <p className='BoxText'>Event Bio: As a child, Jackson became the lead singer of his family's popular Motown group, the Jackson 5. He went on to a solo career of astonishing worldwide success, delivering No. 1 hits from the albums Off the Wall, Thriller and Bad. In his later years, Jackson was dogged by allegations of child molestation.</p>
+                <p className='BoxText'>Event Name: </p>
+                <p className='BoxText'>Point Amount: </p>
+                <p className='BoxText'>Event Bio: </p>
             </div>
         </div>
     );

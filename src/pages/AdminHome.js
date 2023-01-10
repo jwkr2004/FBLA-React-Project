@@ -11,7 +11,7 @@ function AdminHome() {
             </div>
             <div className='Box' id='box2'>
                 <img src={Students} alt='Events' width='100%' height='300px' className='Images' />
-                <a className='button' href='/AdminStudents'>View Events</a>
+                <a className='button' href='/AdminEvents'>View Events</a>
             </div>
         </div>
     );

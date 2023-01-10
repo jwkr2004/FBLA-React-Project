@@ -10,19 +10,19 @@ function StudentHome() {
                 <p>Join your Home Schools Basketball Team! This will be rewarded 25 points!</p>
                 <img src={Basketball} alt='Students' width='100%' height='70%' className='Images' />
                 <br></br>
-                <a className='button2' href='/AdminStudents'>View Event</a>
+                <a className='button2' href='/StudentEvents'>View Event</a>
             </div>
             <div className='Box2' id= 'Box22'>
                 <p>Join your Home Schools Marching Band! This will be rewarded 25 points!</p>
                 <img src={Band} alt='Events' width='100%' height='70%' className='Images' />
                 <br></br>
-                <a className='button2' href='/AdminStudents'>View Event</a>
+                <a className='button2' href='/StudentEvents'>View Event</a>
             </div>
             <div className='Box2' id= 'Box224'>
                 <p>Join your Home Schools Art Club! This will be rewarded 10 points!</p>
                 <img src={Art} alt='Events' width='100%' height='70%' className='Images' />
                 <br></br>
-                <a className='button2' href='/AdminStudents'>View Event</a>
+                <a className='button2' href='/StudentEvents'>View Event</a>
             </div>
         </div>
     );

@@ -8,6 +8,7 @@ const CookieParser = require("cookie-parser")
 const app = express();
 const Accounts = require("./model/AccountSchema");
 const Events = require("./model/EventsSchema");
+// const { redirect } = require("react-router-dom");
 const url = "mongodb://localhost:27017/EventTrackerDB";
 const saltRounds = 10;
 
@@ -77,7 +78,7 @@ app.post("/login", async(req, res) => {
                 if(result) {
                     req.session.user = user[0];
                     //console.log(req.session.user);
-                    res.send({user:user[0], message:`User, ${user[0].username} has logged in.`});
+                    res.send({ user: user[0], message: `User, ${user[0].username} has logged in.` });
                 }
                 else {
                     res.send({message:"Incorrect Password"})

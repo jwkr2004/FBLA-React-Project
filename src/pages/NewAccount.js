@@ -16,8 +16,13 @@ const NewAccount = () => {
         axios
           .post('http://localhost:3001/newaccount', {username, password, isAdmin, firstname, lastname, grade, points: 0})
           .then((res) => {
-            if(res.data.message) {
-              document.getElementById("message").innerText = res.data.message;
+            let Message = res.data.message;
+            console.log(Message);
+            if (res.data.message) {
+              document.getElementById("message").innerText = Message;
+            }
+            if (Message === "Account Created") {
+              window.location.replace('http://localhost:3000');
             }
           })
           .catch(err => {
@@ -37,7 +42,7 @@ const NewAccount = () => {
       }
     }
     return (
-      <>
+      <div id='NewAccount'>
         <h1 className="header">New Account</h1>
         <form id="signupForm" className="Form" onSubmit={e => SubmitForm(e)}>
             <div className="FormDiv">
@@ -76,11 +81,10 @@ const NewAccount = () => {
                 <option value="12">12</option>
               </select>
             </div>
-            
-            <button className="FormSubmit Button" type="submit">Create</button>
+            <button className="FormSubmit" type="submit">Create</button>
         </form>
         <div id="message"></div>
-      </>
+      </div>
     )
 }
 

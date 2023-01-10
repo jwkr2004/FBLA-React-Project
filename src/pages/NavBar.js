@@ -31,13 +31,9 @@ function SetNavBar() {
     else if (user === "Admin") {
         btnArr = [{ title: "Home", Link: "/AdminHome" }, { title: "Student List", Link: "/AdminStudents" }, { title: "Event List", Link: "/AdminEvents" }, { title: "New Account", Link: "/NewAccount" }];
     }
-    /*else {
-        btnArr = [{ title: "Welcome to Student Event Tracker!", Link: "" }]
-    }*/
     else {
-        btnArr = [];
+        btnArr = [{ title: "Welcome to Student Event Tracker!", Link: "" }]
     }
-    
     return (
         <nav>
             {btnArr.map((items, index) => (

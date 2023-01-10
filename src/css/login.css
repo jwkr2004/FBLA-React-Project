@@ -1,6 +1,13 @@
+#NewAccount {
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 .Form {
     border: solid 2px black;
-    margin: 3% auto;
+    margin: 1% auto 2% auto;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -58,7 +65,7 @@
 
 .FormSubmit {
     width: fit-content;
-    padding: 0 5%;
+    padding: 0% 5%;
     text-align: center;
     margin: 1% auto;
 }
@@ -78,9 +85,18 @@
     border: solid 1px black;
     border-radius: 0 10px 10px 0;
 }
-
+a{
+    text-decoration: underline;
+    color: white;
+    font-size: 14px;
+    padding-left: 2%;
+}
+#Questions{
+    padding-left: 30%;
+}
 #message {
     text-align: center;
     color: red;
     font-size: 1.3rem;
+    padding: 0% 0% 2% 0%;
 }

@@ -1,4 +1,4 @@
-//import '../css/login.css';
+import '../css/login.css';
 import axios, { Axios } from "axios";
 import React, { useState } from 'react';
 
@@ -8,19 +8,25 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     axios.defaults.withCredentials = true;
-    function SubmitForm(e) {
-        e.preventDefault();
-        axios
-          .post('http://localhost:3001/login', {username, password})
-          .then((res) => {
-            console.log(res.data);
-            if(res.data.message) {
-              document.getElementById("message").innerText = res.data.message;
-            }
-          })
-          .catch(err => {
-            console.error(err);
-          });
+  function SubmitForm(e) {
+    e.preventDefault();
+    axios
+    .post('http://localhost:3001/login', {username, password})
+    .then((res) => {
+      console.log(res.data);
+      if (res.data.message) {
+        document.getElementById("message").innerText = res.data.message;
+      }
+      if (res.data.user.isAdmin) {
+        window.location.replace('http://localhost:3000/AdminHome');
+      }
+      else {
+        window.location.replace('http://localhost:3000/StudentHome');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    });
     }
     const showPassword = () => {
       if(bool === false) {
@@ -50,10 +56,10 @@ const Login = () => {
             </div>
           </div>
           <button className="FormSubmit Button" id="loginButton" type="submit">Login</button>
+          <p id='Questions'><a href='/newaccount' id='NU'>New User?</a><a href='/ForgotPassword' id='FP'>Forgot Password?</a></p>
         </form>
         <div id="message"></div>
       </>
     )
 }
-
 export default Login;
