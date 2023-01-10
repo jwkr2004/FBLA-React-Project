@@ -38,14 +38,14 @@ app.use(session({
     secret: 'EuF6C2rqPh55nGyuyuAbG9hyCLmqLQNb',
     resave: false,
     saveUninitialized: false,
-    cookie: {expires: 60 * 60 * 1000}
+    cookie: {expires: 2 * 60 * 60 * 1000}
 }));
 
 app.post("/newevent", async(req, res) => {
-    const data = new Events(req.body);
+    var data = new Events(req.body);
     console.log(data);
-    await data.save();
-    res.end();
+    data.save();
+    res.send({ message: "Event Created" }); 
 });
 
 app.post("/newaccount", (req, res) => {
@@ -95,12 +95,34 @@ app.get('/AdminStudents', async (req, res) => {
 
 });
 
+app.get('/getuser', async (req, res) => {
+    var user = req.session.user;
+    //console.log(user)
+    if(user !== undefined) {
+        res.send({id:user._id, username:user.username, isAdmin:user.isAdmin, firstname:user.firstname, lastname:user.lastname, grade:user.grade, points:user.points})
+    }
+});
+
+app.get('/isloggedin', async (req, res) => {
+    if(req.cookies.UserID !== undefined) {
+        res.send({loggedin:true});
+    }
+    else {
+        res.send({loggedin:false});
+    }
+    //console.log(req.cookies.UserID);
+});
 app.get("/getstudents", async(req, res) => {
-    Accounts.find({isAdmin:false}, (err, users) => {
+    res.send(Events)
+});
+app.get("/getevents", async (req, res) => {
+    Accounts.find({ isAdmin: false }, (err, users) => {
         res.send(users);
     });
 });
-
+app.get("/getstudents", async (req, res) => {
+    // res.send(events);
+});
 app.listen(3001, () => {
     console.log("Server running on Port 3001.");
 });

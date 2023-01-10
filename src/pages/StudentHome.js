@@ -5,7 +5,7 @@ import Basketball from './Images/Basketball-Team-Silhouette-PNG.png';
 function StudentHome() {
     return (
         <div id="StudentHome">
-            <h2 className='StudentHead'>Welcome, Student</h2>
+            <h2 id='SHead'>Welcome, Student</h2>
             <div className='Box2' id= 'Box23'>
                 <p>Join your Home Schools Basketball Team! This will be rewarded 25 points!</p>
                 <img src={Basketball} alt='Students' width='100%' height='70%' className='Images' />

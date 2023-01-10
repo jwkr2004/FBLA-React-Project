@@ -1,15 +1,15 @@
 const mongoose = require("mongoose")
 const EventsSchema = new mongoose.Schema({
-    image: {
+    Image: {
         type: String
     },
-    title: {
+    EName: {
         type: String
     },
-    description: {
+    EBio: {
         type: String
     },
-    points: {
+    Points: {
         type: Number
     }
 });

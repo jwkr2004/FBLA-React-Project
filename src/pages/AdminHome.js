@@ -1,6 +1,6 @@
 import '../css/AdminHome.css';
 import Students from './Images/pngtree-graduation-season-student-silhouette-university-png-image_7609944.png';
-import Events from './Images/people-6028800_640.webp';
+import Events from './Images/6fdd91a26c292c6f5a03f3d9e539bbea.png';
 function AdminHome() {
     return (
         <div id="AdminHome">

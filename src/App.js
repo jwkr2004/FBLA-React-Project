@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NoPage from "./pages/NoPage";
-import Home from "./pages/Home";
+import NewEvent from "./pages/NewEvent";
 import Login from "./pages/Login";
 import NewAccount from "./pages/NewAccount";
 import AdminHome from "./pages/AdminHome";
@@ -14,8 +14,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/Home" element={<Home />} />
+        <Route path="/AddEvent" element={<NewEvent />} />
         <Route path="/" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/newaccount" element={<NewAccount />} />
         <Route path="/AdminHome" element={<AdminHome />} />
         <Route path="/AdminEvents" element={<AdminEvents />} />

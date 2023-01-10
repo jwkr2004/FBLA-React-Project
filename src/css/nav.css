@@ -1,0 +1,46 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    text-align: center;
+}
+
+nav {
+    background-color: rgb(192, 75, 75);
+    padding: 1%;
+    border-bottom: solid 2px black;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navButton {
+    background-color: white;
+    border: solid 1px black;
+    padding: 0.5% 2%;
+    border-radius: 10px;
+    width: 120px;
+    text-align: center;
+    margin: 0 3%;
+}
+
+.navButton:link {
+    color: black;
+    text-decoration: none;
+}
+
+.navButton:visited {
+    color: black;
+}
+
+.navButton:hover {
+    color: white;
+    background-color: rgb(79, 79, 79);
+}
+
+.navButton:active {
+    color: black;
+    background-color: white;
+}

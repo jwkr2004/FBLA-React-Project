@@ -1,11 +1,11 @@
 import '../css/StudentEvents.css';
-import EventPic from './Images/Basketball-Team-Silhouette-PNG.png'
+// import EventPic from './Images/Basketball-Team-Silhouette-PNG.png'
 function StudentEvents() {
     return (
         <div id="StudentEvents">
             <h1 className='Headingg'>Events</h1>
             <div className='BoxSE3' id= 'BoxSE33'>
-                <img  src={EventPic} alt='Students' width='20%' height='50%' className='StudentEventIMG' />
+                {/* <img  src={EventPic} alt='Students' width='20%' height='50%' className='StudentEventIMG' /> */}
                 <p className='pushinpp'>Join your Home Schools Art Club This will be rewarded 25 points!</p>
                 <br></br>
                 <a className='button289' href='/AdminStudents'>View Event</a>

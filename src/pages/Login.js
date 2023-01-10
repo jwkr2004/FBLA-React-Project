@@ -1,5 +1,6 @@
 import '../css/login.css';
 import axios, { Axios } from "axios";
+import { useEffect } from 'react';
 import React, { useState } from 'react';
 
 const Login = () => {
@@ -8,6 +9,21 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     axios.defaults.withCredentials = true;
+  useEffect(() => {
+        axios
+            .get('http://localhost:3001/isloggedin')
+            .then((res) => {
+                if(res.data.loggedin) {
+                  console.log("Logged In")
+                }
+                else {
+                  console.log("Not Logged In")
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+  }, []);
   function SubmitForm(e) {
     e.preventDefault();
     axios
@@ -17,15 +33,19 @@ const Login = () => {
       if (res.data.message) {
         document.getElementById("message").innerText = res.data.message;
       }
-      if (res.data.user.isAdmin) {
-        window.location.replace('http://localhost:3000/AdminHome');
-      }
-      else {
-        window.location.replace('http://localhost:3000/StudentHome');
+      if (res.data.user) {
+        console.log(res.data.message)
+        if (res.data.user.isAdmin) {
+          window.open('http://localhost:3000/AdminHome', '_self');
+        }
+        else {
+          window.open('http://localhost:3000/StudentHome', '_self');
+        }
       }
     })
     .catch(err => {
       console.error(err);
+      document.getElementById("message").innerText = err.message;
     });
     }
     const showPassword = () => {
@@ -56,7 +76,7 @@ const Login = () => {
             </div>
           </div>
           <button className="FormSubmit Button" id="loginButton" type="submit">Login</button>
-          <p id='Questions'><a href='/newaccount' id='NU'>New User?</a><a href='/ForgotPassword' id='FP'>Forgot Password?</a></p>
+          <p id='Questions'><a href='/ForgotPassword' id='FP'>Forgot Password?</a></p>
         </form>
         <div id="message"></div>
       </>
