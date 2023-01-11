@@ -12,7 +12,6 @@ const Events = require("./model/EventsSchema");
 const url = "mongodb://localhost:27017/EventTrackerDB";
 const saltRounds = 10;
 
-
 mongoose
     .connect(url)
     .then(() => {
@@ -91,6 +90,16 @@ app.post("/login", async(req, res) => {
     });
 });
 
+app.get("/", async (req, res) => {
+    if(req.cookies.UserID && !req.session.user) {
+        res.clearCookie("UserID")
+        console.log("Deleted Cookie")
+    }
+    else {
+        console.log(req.session.user)
+    }
+})
+
 app.get('/AdminStudents', async (req, res) => {
 
 });
@@ -101,6 +110,15 @@ app.get('/getuser', async (req, res) => {
     if(user !== undefined) {
         res.send({id:user._id, username:user.username, isAdmin:user.isAdmin, firstname:user.firstname, lastname:user.lastname, grade:user.grade, points:user.points})
     }
+    else{
+        res.send("User Not Logged In")
+    }
+});
+
+app.get("/logou", async (req, res) => {
+    Accounts.find({ isAdmin: false }, (err, users) => {
+        res.send(users);
+    });
 });
 
 app.get('/isloggedin', async (req, res) => {
@@ -112,12 +130,20 @@ app.get('/isloggedin', async (req, res) => {
     }
     //console.log(req.cookies.UserID);
 });
-app.get("/getstudents", async(req, res) => {
-    res.send(Events)
-});
-app.get("/getevents", async (req, res) => {
+app.get("/getstudents", async (req, res) => {
     Accounts.find({ isAdmin: false }, (err, users) => {
         res.send(users);
+    });
+});
+app.post("/eventSearch", async (req, res) => {
+    var result = new req.body
+    console.log(result);
+    data.save();
+    res.send({ message: "Searched" });
+})
+app.get("/getevents", async (req, res) => {
+    Events.find({}, (err, events) => {
+        res.send(events)
     });
 });
 app.get("/getstudents", async (req, res) => {
