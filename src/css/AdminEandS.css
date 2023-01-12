@@ -49,8 +49,5 @@
     width: 200px;
     height: 150px;
     float: left;
-    padding-top: 1.5%;
-}
-.BoxText{
-    padding-left: 220px;
+    padding: 1.5% 1.5% 0% 0% ;
 }

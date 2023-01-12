@@ -92,11 +92,11 @@ app.post("/login", async(req, res) => {
 
 app.get("/", async (req, res) => {
     if(req.cookies.UserID && !req.session.user) {
-        res.clearCookie("UserID")
-        console.log("Deleted Cookie")
+        //res.clearCookie("UserID")
+        //console.log("Deleted Cookie")
     }
     else {
-        console.log(req.session.user)
+        //console.log(req.session.user)
     }
 })
 
@@ -115,10 +115,12 @@ app.get('/getuser', async (req, res) => {
     }
 });
 
-app.get("/logou", async (req, res) => {
-    Accounts.find({ isAdmin: false }, (err, users) => {
+app.get("/logout", async (req, res) => {
+    /*Accounts.find({ isAdmin: false }, (err, users) => {
         res.send(users);
-    });
+    });*/
+    req.session.destroy()
+    res.send();
 });
 
 app.get('/isloggedin', async (req, res) => {
@@ -136,10 +138,16 @@ app.get("/getstudents", async (req, res) => {
     });
 });
 app.post("/eventSearch", async (req, res) => {
-    var result = new req.body
-    console.log(result);
-    data.save();
-    res.send({ message: "Searched" });
+    Events.find({ EName: req.body.search }, (err, result) => {
+        res.send(result);
+        console.log(result);
+    });
+})
+app.post("/studentSearch", async (req, res) => {
+    Accounts.find({ firstname: req.body.search }, (err, result) => {
+        res.send(result);
+        console.log(result);
+    });
 })
 app.get("/getevents", async (req, res) => {
     Events.find({}, (err, events) => {

@@ -86,7 +86,7 @@ const Login = () => {
             </div>
           </div>
           <button className="FormSubmit Button" id="loginButton" type="submit">Login</button>
-          <p id='Questions'><a href='/ForgotPassword' id='FP'>Forgot Password?</a></p>
+          {/*<p id='Questions'><a href='/ForgotPassword' id='FP'>Forgot Password?</a></p>*/}
         </form>
         <div id="message"></div>
       </>

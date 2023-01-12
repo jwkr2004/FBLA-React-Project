@@ -53,14 +53,14 @@ function SetNavBar() {
             return(
                 <div id="userDetails">
                     <h2>Welcome, {user}</h2>
-                    <a id="logout" onClick={() => logout()}>Logout</a>
+                    <a href="/login" id="logout" onClick={() => logout()}>Logout</a>
                 </div>
             )
         }
         else {
             return(
                 <div id="userDetails">
-                    <a id="login" onClick={() => window.open(window.open("/", "_self"))}>Login</a>
+                    <a href="/login" id="login">Login</a>
                 </div>
             )
         }
