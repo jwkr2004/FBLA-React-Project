@@ -132,31 +132,37 @@ app.get('/isloggedin', async (req, res) => {
     }
     //console.log(req.cookies.UserID);
 });
+
 app.get("/getstudents", async (req, res) => {
     Accounts.find({ isAdmin: false }, (err, users) => {
         res.send(users);
     });
 });
+
 app.post("/eventSearch", async (req, res) => {
     Events.find({ EName: req.body.search }, (err, result) => {
         res.send(result);
         console.log(result);
     });
 })
+
 app.post("/studentSearch", async (req, res) => {
     Accounts.find({ firstname: req.body.search }, (err, result) => {
         res.send(result);
         console.log(result);
     });
 })
+
 app.get("/getevents", async (req, res) => {
     Events.find({}, (err, events) => {
         res.send(events)
     });
 });
+
 app.get("/getstudents", async (req, res) => {
     // res.send(events);
 });
+
 app.listen(3001, () => {
     console.log("Server running on Port 3001.");
 });

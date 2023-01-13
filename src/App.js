@@ -10,7 +10,13 @@ import AdminStudents from "./pages/AdminStudents";
 import StudentHome from "./pages/StudentHome";
 import StudentPoints from "./pages/StudentPoints";
 import StudentEvents from "./pages/StudentEvents";
+import { useEffect } from 'react';
+
 const App = () => {
+  useEffect(() => {
+        
+  }, []);
+  
   return (
     <BrowserRouter>
       <Routes>
