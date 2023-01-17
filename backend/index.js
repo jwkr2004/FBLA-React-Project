@@ -37,7 +37,7 @@ app.use(session({
     secret: 'EuF6C2rqPh55nGyuyuAbG9hyCLmqLQNb',
     resave: false,
     saveUninitialized: false,
-    cookie: {expires: 2 * 60 * 60 * 1000}
+    cookie: {expires: 2 * 60 * 60 * 1000, secure: false}
 }));
 
 app.post("/newevent", async(req, res) => {
@@ -105,10 +105,11 @@ app.get('/AdminStudents', async (req, res) => {
 });
 
 app.get('/getuser', async (req, res) => {
+    //console.log(req.cookies)
     var user = req.session.user;
     //console.log(user)
     if(user !== undefined) {
-        res.send({id:user._id, username:user.username, isAdmin:user.isAdmin, firstname:user.firstname, lastname:user.lastname, grade:user.grade, points:user.points})
+        res.send({user})
     }
     else{
         res.send("User Not Logged In")
@@ -116,21 +117,19 @@ app.get('/getuser', async (req, res) => {
 });
 
 app.get("/logout", async (req, res) => {
-    /*Accounts.find({ isAdmin: false }, (err, users) => {
-        res.send(users);
-    });*/
-    req.session.destroy()
+    req.session.destroy();
+    res.clearCookie("UserID", { path: '/' })
     res.send();
 });
 
 app.get('/isloggedin', async (req, res) => {
+    console.log(req.session.user);
     if(req.cookies.UserID !== undefined) {
-        res.send({loggedin:true});
+        res.send({loggedin:true, user: req.session.user});
     }
     else {
         res.send({loggedin:false});
     }
-    //console.log(req.cookies.UserID);
 });
 
 app.get("/getstudents", async (req, res) => {

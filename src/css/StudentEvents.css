@@ -44,6 +44,7 @@ font-size: 20px;
 }
 .StudentEventIMG{
     float: left;
+    border-radius: 10px;
 }
 .button289{
     float: right;
@@ -58,15 +59,18 @@ font-size: 20px;
     margin-right: 20px;
     font-size: 26px;
 }
+.button289:hover{
+    background-color: grey;
+    cursor: pointer;
+}
 .BoxSE3{
-   
-    
     background-color: #C04B4B;
     border-radius: 10px;
     width: 80%;
     height: auto;
     color: white;
     padding: 1% 1% 10%;
-    margin-left: 10% ;
+    margin-left: 10%;
+    margin-bottom: 3%;
     
 }

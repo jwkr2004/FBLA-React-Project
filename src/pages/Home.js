@@ -1,5 +1,5 @@
 import '../css/Home.css';
-import axios from "axios"
+import axios from "axios";
 
 const Home = () => {
   function SubmitForm(e) {

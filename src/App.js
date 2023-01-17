@@ -11,10 +11,26 @@ import StudentHome from "./pages/StudentHome";
 import StudentPoints from "./pages/StudentPoints";
 import StudentEvents from "./pages/StudentEvents";
 import { useEffect } from 'react';
+import axios from "axios";
 
 const App = () => {
+  axios.defaults.withCredentials = true
   useEffect(() => {
-        
+        axios
+            .get('http://localhost:3001/isloggedin')
+            .then((res) => {
+                if(!res.data.loggedin && window.location.pathname !== "/login") {
+                  console.log("Opening Login Page")
+                  window.open("/login", "_self")
+                }
+                else if(res.data.loggedin && window.location.pathname == "/login") {
+                  window.open("/adminhome", "_self")
+                }
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.error(err);
+            });
   }, []);
   
   return (
@@ -23,7 +39,7 @@ const App = () => {
         <Route path="/AddEvent" element={<NewEvent />} />
         <Route path="/" element={<Login />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/newaccount" element={<NewAccount />} />
+        <Route path="/NewAccount" element={<NewAccount />} />
         <Route path="/AdminHome" element={<AdminHome />} />
         <Route path="/AdminEvents" element={<AdminEvents />} />
         <Route path="/AdminStudents" element={<AdminStudents />} />

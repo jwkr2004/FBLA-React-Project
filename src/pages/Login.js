@@ -19,21 +19,23 @@ const Login = () => {
                 console.error(err);
             });
   }, []);
-  useEffect(() => {
+  /*useEffect(() => {
         axios
             .get('http://localhost:3001/isloggedin')
             .then((res) => {
                 if(res.data.loggedin) {
                   console.log("Logged In")
+                  window.open("/adminhome", "_self")
                 }
                 else {
                   console.log("Not Logged In")
+                  window.open("/login", "_self")
                 }
             })
             .catch(err => {
                 console.error(err);
             });
-  }, []);
+  }, []);*/
   function SubmitForm(e) {
     e.preventDefault();
     axios

@@ -1,25 +1,43 @@
 import '../css/StudentEvents.css';
-// import EventPic from './Images/Basketball-Team-Silhouette-PNG.png'
+import axios from "axios";
+import { useEffect } from 'react';
+import { useState } from 'react';
 function StudentEvents() {
+    const [data, setData] = useState();
+    useEffect(() => {
+        axios
+            .get('http://localhost:3001/getevents')
+            .then((res) => {
+                setData(res.data);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    }, []);
+    function joinEvent() {
+        console.log('Test');
+    }
+    function getEvents() {
+        if (data) {
+            return (
+                <>
+                    {data.map((events, index) => (
+                        <div className='BoxSE3' id='BoxSE33'>
+                            <img src={events.Image} alt='Students' width='250px' height='160px' className='StudentEventIMG' />
+                            <p className='pushinpp'><b>{events.EName}</b>: {events.EBio} <br></br>This will rewarded you <b>{events.Points}</b> points!</p>
+                            <br></br>
+                            <button type="button" className='button289' onClick={()=> joinEvent()}>Join Event!</button>
+                        </div>
+                    ))}
+                </>
+            )  
+        }
+    }
     return (
         <div id="StudentEvents">
             <h1 className='Headingg'>Events</h1>
-            <div className='BoxSE3' id= 'BoxSE33'>
-                {/* <img  src={EventPic} alt='Students' width='20%' height='50%' className='StudentEventIMG' /> */}
-                <p className='pushinpp'>Join your Home Schools Art Club This will be rewarded 10 points!</p>
-                <br></br>
-                <a className='button289' href='/AdminStudents'>Join Event</a>
-            </div>
-            {/* <h1 className='Headingg'>Non-Sports</h1>
-            <div className='BoxSE2' id= 'BoxSE22'>
-                <img src={NonSportTest} alt='Students' width='20%' height='50%' className='StudentEventIMG' />
-                <p className='pushinpp'>Join your Home Schools Art Club This will be rewarded 25 points!</p>
-                <br></br>
-                <a className='button289' href='/AdminStudents'>View Event</a>
-            </div> */}
-        </div>
-       
-        
+            {getEvents()}
+        </div>    
     );
 }
 export default StudentEvents;

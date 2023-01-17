@@ -1,7 +1,10 @@
 import '../css/AdminHome.css';
 import Students from './Images/pngtree-graduation-season-student-silhouette-university-png-image_7609944.png';
 import Events from './Images/6fdd91a26c292c6f5a03f3d9e539bbea.png';
+import { useLocation } from 'react-router-dom'
 function AdminHome() {
+    // const location = useLocation();
+    // console.log(location.pathname);
     return (
         <div id="AdminHome">
             <h2 id="head">Welcome, Admin</h2>
