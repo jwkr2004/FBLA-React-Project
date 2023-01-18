@@ -20,6 +20,9 @@ const AccountSchema = new mongoose.Schema({
     },
     points: {
         type: Number
+    },
+    events: {
+        type: Array
     }
 });
 module.exports = mongoose.model('accounts', AccountSchema, 'accounts');

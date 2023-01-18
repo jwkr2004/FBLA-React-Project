@@ -8,9 +8,9 @@ const CookieParser = require("cookie-parser")
 const app = express();
 const Accounts = require("./model/AccountSchema");
 const Events = require("./model/EventsSchema");
-// const { redirect } = require("react-router-dom");
 const url = "mongodb://localhost:27017/EventTrackerDB";
 const saltRounds = 10;
+
 
 mongoose
     .connect(url)
@@ -90,16 +90,6 @@ app.post("/login", async(req, res) => {
     });
 });
 
-app.get("/", async (req, res) => {
-    if(req.cookies.UserID && !req.session.user) {
-        //res.clearCookie("UserID")
-        //console.log("Deleted Cookie")
-    }
-    else {
-        //console.log(req.session.user)
-    }
-})
-
 app.get('/AdminStudents', async (req, res) => {
 
 });
@@ -123,12 +113,23 @@ app.get("/logout", async (req, res) => {
 });
 
 app.get('/isloggedin', async (req, res) => {
-    console.log(req.session.user);
-    if(req.cookies.UserID !== undefined) {
-        res.send({loggedin:true, user: req.session.user});
+    if(req.cookies.UserID && !req.session.user) {
+        res.clearCookie("UserID", { path: '/' });
+        res.send();
+    }
+    else if(!req.cookies.UserID && req.session.user) {
+        req.session.destroy();
+        res.send();
     }
     else {
-        res.send({loggedin:false});
+        if(req.cookies.UserID !== undefined) {
+            console.log("LoggedIn: " + true);
+            res.send({loggedin:true, user: req.session});
+        }
+        else {
+            console.log("LoggedIn: " + false);
+            res.send({loggedin:false});
+        }
     }
 });
 
@@ -158,10 +159,44 @@ app.get("/getevents", async (req, res) => {
     });
 });
 
-app.get("/getstudents", async (req, res) => {
-    // res.send(events);
+app.post("/newaccount", (req, res) => {
+    Accounts.find({ username: req.body.username }, (err, user) => {
+        if (user.length > 0) {
+            res.send({ message: "Username Already Exists" });
+        }
+        else {
+            bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+                if (err) {
+                    console.log(err);
+                }
+                req.body.password = hash;
+                //console.log(req.body);
+                var data = new Accounts(req.body);
+                data.save();
+            });
+            res.send({ message: "Account Created" });
+        }
+    });
 });
 
+app.post("/updatepoints", async (req, res) => {
+    //await Accounts.findOneAndUpdate({username: req.body.user.username}, {points: (req.body.user.points + req.body.points)});
+    let doc = await Accounts.findOne({ username: req.body.user.username });
+    if (!doc.events.includes(req.body.event.EName)){
+        doc.events.push(req.body.event.EName);
+        doc.points = doc.points + req.body.event.Points;
+        await doc.save()
+        req.session.user.points = doc.points
+        res.send({ message: "Joined Event" })
+    }
+    else if (doc.events.includes(req.body.event.EName)) {
+        res.send({ message: "Event Already Joined" })
+    }
+    else {
+        res.send({ message: "Error" })
+    }
+    res.send()
+});
 app.listen(3001, () => {
     console.log("Server running on Port 3001.");
 });
