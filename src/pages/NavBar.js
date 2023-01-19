@@ -10,7 +10,7 @@ function SetNavBar() {
         axios
             .get('http://localhost:3001/getuser')
             .then((res) => {
-                console.log(res.data);
+                //console.log(res.data);
                 if(res.data.user) {
                     setUser(res.data.user);
                 }
@@ -27,7 +27,7 @@ function SetNavBar() {
             });
     }
     useEffect(() => {
-        console.log(user);
+        //console.log(user);
         if(user) {
             if (!user.isAdmin) {
                 setBtnArr([{ title: "Home", Link: "/StudentHome" }, { title: "Your Points", Link: "/StudentPoints" }, { title: "Events", Link: "/StudentEvents" }, { title: "Log Out", Link: "/logout" }]);

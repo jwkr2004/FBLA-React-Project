@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 #SHead{
-    padding: 1%;
+    padding: 1% 1% 0% 1%;
 }
 .Box2{
     text-align: center;
@@ -29,24 +29,18 @@
 .button2:hover{
     background-color: grey;
 }
-#box23{
-    float: left ;
-}
-#box22{
-    float: right;
-}
-#box224{
-    float:right;
-}
-  .Box2 {
+.Box2 {
     float: left;
     width: 346px;
     padding: 5px;
-    margin: 75px;
-  }
-  
-  .clearfix::after {
+    margin: 20px 75px 75px 75px
+}
+.clearfix::after {
     content: "";
     clear: both;
     display: table;
-  }
+}
+.HomeImg {
+    border-radius: 10px;
+    padding-bottom: 15px;
+}

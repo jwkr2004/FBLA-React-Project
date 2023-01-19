@@ -42,13 +42,9 @@ function StudentEvents() {
             .post('http://localhost:3001/updatepoints', {user, event})
             .then((res) => {
                 console.log(res.data);
-                let Message = res.data.message;
-                console.log(Message);
                 if (res.data.message) {
-                    document.getElementById("message").innerText = Message;
-                }
-                if (Message === "Account Created") {
-                    window.location.replace('http://localhost:3000');
+                    console.log(res.data.message);
+                    document.getElementById("message").innerText = res.data.message;
                 }
             })
             .catch(err => {
@@ -63,7 +59,7 @@ function StudentEvents() {
                     {data.map((events, index) => (
                         <div className='BoxSE3' id='BoxSE33'>
                             <img src={events.Image} alt='Students' width='250px' height='160px' className='StudentEventIMG' />
-                            <p className='pushinpp'><b>{events.EName}</b>: {events.EBio} <br></br>This will rewarded you <b>{events.Points}</b> points!</p>
+                            <p className='pushinpp'><b>{events.EName}</b>: {events.EBio} <br></br><br></br>This will reward you <b>{events.Points}</b> points!</p>
                             <br></br>
                             <button type="button" className='button289' onClick={() => joinEvent(events)}>Join Event!</button>
                         </div>
@@ -76,6 +72,7 @@ function StudentEvents() {
         <div id="StudentEvents">
             <h1 className='Headingg'>Events</h1>
             {getEvents()}
+            <div id="message"></div>
         </div>    
     );
 }

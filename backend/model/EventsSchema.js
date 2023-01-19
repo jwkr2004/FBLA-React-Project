@@ -11,6 +11,9 @@ const EventsSchema = new mongoose.Schema({
     },
     Points: {
         type: Number
+    },
+    Date: {
+        type: Date
     }
 });
 module.exports = mongoose.model('events', EventsSchema);

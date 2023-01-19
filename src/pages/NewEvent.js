@@ -7,13 +7,15 @@ const NewEvent = () => {
   const [EName, setEName] = useState("");
   const [EBio, setEBio] = useState("");
   const [Points, setPoints] = useState("");
+  const [Time, setTime] = useState("");
+  const [Date, setDate] = useState("");
   const [selectedFile, setSelectedFile] = useState();
 
   function SubmitForm(e) {
     e.preventDefault();
-    console.log(Image, EName, EBio, Points);
+    //console.log(Image, EName, EBio, Points, Time, Date);
     axios
-      .post('http://localhost:3001/newevent', { Image, EName, EBio, Points })
+      .post('http://localhost:3001/newevent', { Image, EName, EBio, Points, Date: `${Date}T${Time}` })
       .then((res) => {
         let Message = res.data.message;
         console.log(Message);
@@ -47,6 +49,14 @@ const NewEvent = () => {
         <div className="FormDiv">
           <label>Point Value:</label>
           <input id="Points" name="Points" type="text" onChange={(e) => setPoints(e.target.value)} required />
+        </div>
+        <div className="FormDiv">
+          <label>Date of Event:</label>
+          <input id="date" name="Date" type="date" onChange={(e) => setDate(e.target.value)} required />
+        </div>
+        <div className="FormDiv">
+          <label>Time of Event:</label>
+          <input id="time" name="Time" type="time" onChange={(e) => setTime(e.target.value)} required />
         </div>
         <button className="FormSubmit" type="submit">Create</button>
       </form>

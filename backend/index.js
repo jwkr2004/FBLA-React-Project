@@ -11,7 +11,6 @@ const Events = require("./model/EventsSchema");
 const url = "mongodb://localhost:27017/EventTrackerDB";
 const saltRounds = 10;
 
-
 mongoose
     .connect(url)
     .then(() => {
@@ -42,9 +41,9 @@ app.use(session({
 
 app.post("/newevent", async(req, res) => {
     var data = new Events(req.body);
-    console.log(data);
+    console.log(req.body);
     data.save();
-    res.send({ message: "Event Created" }); 
+    res.send({ message: "Event Created" });
 });
 
 app.post("/newaccount", (req, res) => {
@@ -180,7 +179,6 @@ app.post("/newaccount", (req, res) => {
 });
 
 app.post("/updatepoints", async (req, res) => {
-    //await Accounts.findOneAndUpdate({username: req.body.user.username}, {points: (req.body.user.points + req.body.points)});
     let doc = await Accounts.findOne({ username: req.body.user.username });
     if (!doc.events.includes(req.body.event.EName)){
         doc.events.push(req.body.event.EName);
@@ -191,9 +189,6 @@ app.post("/updatepoints", async (req, res) => {
     }
     else if (doc.events.includes(req.body.event.EName)) {
         res.send({ message: "Event Already Joined" })
-    }
-    else {
-        res.send({ message: "Error" })
     }
     res.send()
 });

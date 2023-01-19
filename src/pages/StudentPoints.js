@@ -26,7 +26,7 @@ function StudentPoints() {
     console.log(user)
     return (
         <div id="StudentHome">
-            <h2 id='leader'>LeaderBoard</h2>
+            <h2 id='leader'>Leaderboard</h2>
             <h2 id='_points'>Your Points</h2>
             <div className='Box45' id='Box456'>
                 <p id='notpushinp'>{getPoints()}</p>
