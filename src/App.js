@@ -1,5 +1,6 @@
-import ReactDOM from "react-dom/client";
+//import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./pages/Main";
 import NoPage from "./pages/NoPage";
 import NewEvent from "./pages/NewEvent";
 import Login from "./pages/Login";
@@ -17,8 +18,6 @@ import axios from "axios";
 const App = () => {
   const [user, setUser] = useState();
   axios.defaults.withCredentials = true;
-
-  
   useEffect(() => {
         axios
             .get('http://localhost:3001/isloggedin')
@@ -27,7 +26,7 @@ const App = () => {
                   console.log("Opening Login Page")
                   window.open("/login", "_self")
                 }
-                else if(res.data.loggedin && window.location.pathname == "/login") {
+                else if(res.data.loggedin && window.location.pathname === "/login") {
                   window.open("/adminhome", "_self")
                 }
                 if(res.data.loggedin) {
@@ -44,17 +43,15 @@ const App = () => {
                 console.error(err);
             });
   }, []);
-
   //Loads routes if a user is logged in
   if(user) {
-    
     //Loads all of the routes if the user is an admin
     if(user === "Admin") {
       return (
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Main />} />
             <Route path="/AddEvent" element={<NewEvent />} />
-            <Route path="/" element={<Login />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/NewAccount" element={<NewAccount />} />
             <Route path="/AdminHome" element={<AdminHome />} />
@@ -68,13 +65,12 @@ const App = () => {
         </BrowserRouter>
       );
     }
-
     //Loads only student routes if the user logged in is not an admin
     else {
       return (
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Main />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/StudentHome" element={<StudentHome />} />
             <Route path="/StudentPoints" element={<StudentPoints />} />
@@ -90,29 +86,12 @@ const App = () => {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Main />} />
           <Route path="/Login" element={<Login />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
     );
   }
-  /*return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/AddEvent" element={<NewEvent />} />
-        <Route path="/" element={<Login />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/NewAccount" element={<NewAccount />} />
-        <Route path="/AdminHome" element={<AdminHome />} />
-        <Route path="/AdminEvents" element={<AdminEvents />} />
-        <Route path="/AdminStudents" element={<AdminStudents />} />
-        <Route path="/StudentHome" element={<StudentHome />} />
-        <Route path="/StudentPoints" element={<StudentPoints />} />
-        <Route path="/StudentEvents" element={<StudentEvents />} />
-        <Route path="*" element={<NoPage />} />
-      </Routes>
-    </BrowserRouter>
-  );*/
 }
 export default App;

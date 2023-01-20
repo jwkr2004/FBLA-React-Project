@@ -1,4 +1,5 @@
 import '../css/Footer.css';
+//Displays the Footer
 const Footer = () => {
     return (
         <footer id="Footer">

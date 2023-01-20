@@ -14,11 +14,11 @@
     padding: .5%;
 }
 .Search2{
-    width: 68%;
+    width: 67%;
     border-radius: 10px;
     border: 2px solid black;
     font-size: 20px;
-    margin: 2% 2% 2% 15%;
+    margin: 2% 2% 1% 15%;
     padding: .5%;
 }
 .SearchB{
@@ -45,9 +45,16 @@
     cursor: pointer;
 }
 .ButtonsA{
-    margin-left: 18%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width:80%;
+    padding: 1%;
+    margin: 0 auto;
 }
 .Boxs{
+    border: black solid 2px;
+    border-radius: 10px;
     margin: 3% 10% 3% 10%;
     background-color: rgb(150, 150, 150);
     font-size: 20px;
@@ -56,7 +63,7 @@
 }
 .Boxs img{
     width: 200px;
-    height: 150px;
+    height: 190px;
     float: left;
     padding: 1.5% 1.5% 0% 0% ;
 }
@@ -104,4 +111,13 @@
 
 .show {
     display: block;
+}
+.Filter{
+    width: fit-content;
+    height: 10%;
+    font-size: 20px;
+    padding: 0.5%;
+    border: 2px black solid;
+    border-radius: 10px;
+    color: grey;
 }

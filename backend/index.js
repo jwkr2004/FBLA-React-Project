@@ -192,6 +192,14 @@ app.post("/updatepoints", async (req, res) => {
     }
     res.send()
 });
+// app.get("/leaderboard", async (req, res) => {
+//      Accounts.find({ isAdmin: false }.sort({ "Points": -1 }).limit(10), (err, users) => {
+//         if(err) {
+//             console.error(err);
+//         }
+//          res.send(users);
+//      });
+//  });
 app.listen(3001, () => {
     console.log("Server running on Port 3001.");
 });
