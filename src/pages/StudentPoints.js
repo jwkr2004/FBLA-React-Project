@@ -5,8 +5,6 @@ import { useEffect } from 'react';
 function StudentPoints() {
     const [user, setUser] = useState();
     const [users, setUsers] = useState([]);
-    //const [sortedUsers, setSortedUsers] = useState([]);
-    const [data, setData] = useState();
     useEffect(() => {
         axios
             .get('http://localhost:3001/getuser')
@@ -23,9 +21,6 @@ function StudentPoints() {
             .get('http://localhost:3001/getstudents')
             .then((res) => {
                 setUsers(res.data);
-                // if (res.data.users) {
-                //     setUser(res.data.user);
-                // }
             })
             .catch(err => {
                 console.error(err);
@@ -47,15 +42,8 @@ function StudentPoints() {
                     <p className='pushinp'>{sortedUsers[i].username}: {sortedUsers[i].points}</p>
                 )
             }
-            
-            // return (
-            //     <div className='Box46' id='Box457'>
-            //         <p className='pushinp'>{events.username}: {events.points}</p>
-            //     </div>
-            // )
             console.log(arr);
             return(arr)
-            
         }
     }
     function getPoints() {
@@ -64,7 +52,6 @@ function StudentPoints() {
             return user.points;
         }
     }
-    //console.log(user)
     return (
         <div id="StudentHome">
             <h2 id='leader'>Leaderboard</h2>

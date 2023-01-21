@@ -27,7 +27,6 @@ function SetNavBar() {
             });
     }
     useEffect(() => {
-        //console.log(user);
         if(user) {
             if (!user.isAdmin) {
                 setBtnArr([{ title: "Home", Link: "/StudentHome" }, { title: "Your Points", Link: "/StudentPoints" }, { title: "Events", Link: "/StudentEvents" }, { title: "Log Out", Link: "/logout" }]);
@@ -37,29 +36,18 @@ function SetNavBar() {
             }
         }
         else {
-            setBtnArr([{ title: "Welcome to the Student Event Tracker! Click to log in", Link: "/login" }]);
+            setBtnArr([{ title: "Welcome to the Student Event Tracker!", Link: "/login" }]);
         }
     }, [user]);
-
-    function logout() {
-        axios
-            .get('http://localhost:3001/logout')
-            .then(() => {
-                console.log("logged Out!")
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    }
 
     function navbar() {
         if(btnArr) {
             return(
-                <>
+                <nav>
                     {btnArr.map((items, index) => (
                         <a id={`navButton${index}`} className="navButton" key={`Button${index}`} href={items.Link} onClick={() => urlGet(items.Link)}>{items.title}</a>
                     ))}
-                </>
+                </nav>
             )
         }
         else {
@@ -69,12 +57,9 @@ function SetNavBar() {
         }
     }
     return (
-        <nav>
-            {/*btnArr.map((items, index) => (
-                <a id={`navButton${index}`} className="navButton" key={`Button${index}`} href={items.Link} onClick={() => urlGet(items.Link)}>{items.title}</a>
-            ))*/}
+        <>
             {navbar()}
-        </nav>
+        </>
     )
 }
 

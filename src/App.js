@@ -1,4 +1,3 @@
-//import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import NoPage from "./pages/NoPage";
@@ -22,22 +21,20 @@ const App = () => {
         axios
             .get('http://localhost:3001/isloggedin')
             .then((res) => {
-                if(!res.data.loggedin && window.location.pathname !== "/login") {
-                  console.log("Opening Login Page")
-                  window.open("/login", "_self")
+                if(!res.data.loggedin && window.location.pathname.toLowerCase() !== "/login") {
+                  window.open("/login", "_self");
                 }
-                else if(res.data.loggedin && window.location.pathname === "/login") {
-                  window.open("/adminhome", "_self")
+                else if(res.data.loggedin && window.location.pathname.toLowerCase() === "/login") {
+                  window.open("/", "_self");
                 }
                 if(res.data.loggedin) {
                     if(res.data.user.user.isAdmin) {
-                      setUser("Admin")
+                      setUser("Admin");
                     }
                     else {
-                      setUser("Student")
-                    }
-                }
-                console.log(res.data);
+                      setUser("Student");
+                    };
+                };
             })
             .catch(err => {
                 console.error(err);
@@ -93,5 +90,5 @@ const App = () => {
       </BrowserRouter>
     );
   }
-}
+};
 export default App;

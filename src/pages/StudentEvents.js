@@ -4,9 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 function StudentEvents() {
     const [data, setData] = useState();
-    const [users, setUsers] = useState();
     const [user, setUser] = useState();
-    const [points, setPoints] = useState();
     useEffect(() => {
         // Gets the User Info
         axios
@@ -29,15 +27,6 @@ function StudentEvents() {
             .catch(err => {
                 console.error(err);
             });
-        // Gets all Students
-        axios
-            .get('http://localhost:3001/getstudents')
-            .then((res) => {
-                setUsers(res.data);
-            })
-            .catch(err => {
-                console.error(err);
-            });
     }, []);
     // Updates Points for User and Updates it in Database
     function joinEvent(event) {
@@ -56,7 +45,7 @@ function StudentEvents() {
             });
         }
     }
-    //Displays all Events
+    //Displays all events
     function getEvents() {
         if (data) {
             console.log(data)
@@ -77,7 +66,7 @@ function StudentEvents() {
     return (
         <div id="StudentEvents">
             <h1 className='Headingg'>Events</h1>
-            {/* Message to tell user if Joined Event or Not  */}
+            {/* Message to tell the user if they've joined an event or not  */}
             <div id="message"></div>
             {getEvents()}
         </div>    

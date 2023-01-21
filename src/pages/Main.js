@@ -1,6 +1,6 @@
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { useEffect } from 'react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Main = () => {
     const [user, setUser] = useState();
@@ -12,6 +12,9 @@ const Main = () => {
                 //console.log(res.data);
                 if(res.data.user) {
                     setUser(res.data.user);
+                }
+                else if(res.data === "User Not Logged In") {
+                    setUser("notLoggedIn");
                 }
             })
             .catch(err => {
@@ -26,17 +29,17 @@ const Main = () => {
             });
     }*/
     useEffect(() => {
-        //console.log(user);
+        console.log(user)
         if(user) {
-            if (!user.isAdmin) {
+            if(user === "notLoggedIn"){
+                window.open("/Login", "_self");
+            }
+            else if (!user.isAdmin) {
                 window.open("/StudentHome", "_self");
             }
             else if (user.isAdmin) {
                 window.open("/AdminHome", "_self");
             }
-        }
-        else {
-            window.open("/Login", "_self");
         }
     }, [user]);
 }

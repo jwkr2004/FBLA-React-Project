@@ -6,7 +6,7 @@ function AdminEvents() {
     const [data, setData] = useState();
     const [search, setSearch] = useState();
     useEffect(() => {
-        //Getting Events from Database
+        //Sends a Get request to the backend Express server to obtain all of the events
         axios
             .get('http://localhost:3001/getevents')
             .then((res) => {
@@ -17,7 +17,7 @@ function AdminEvents() {
             });
     }, []);
     function getEvents() {
-        // Displaying Searched and All Events from Database 
+        //Displays any events that match the searched term if there is a searched term
         if(search && data) {
             return(
                 <>
@@ -26,6 +26,7 @@ function AdminEvents() {
                             <div className='Boxs'>
                                 <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
                                 <p className='BoxText'>Event Name: {events.EName}</p>
+                                <p className='BoxText'>Time of Event: {events.Date}</p>
                                 <p className='BoxText'>Point Amount: {events.Points}</p>
                                 <p className='BoxText'>Event Bio: {events.EBio}</p>
                             </div>
@@ -34,17 +35,18 @@ function AdminEvents() {
                 </>
             ) 
         }
+        //Displays all events if there are no searched terms
         else if(data){
             return(
                 <>
-                    {data.map((event, index) => (
+                    {data.map((events, index) => (
                         <div className='Boxs'>
-                            <img src={event.Image} alt='EventImg' width='100px' height='100px'></img>
-                            <p className='BoxText'>Event Name: {event.EName}</p>
-                            {console.log(new Date(event.Date))}
-                            <p className='BoxText'>Time of Event: {event.Date}</p>
-                            <p className='BoxText'>Point Amount: {event.Points}</p>
-                            <p className='BoxText'>Event Description: {event.EBio}</p>
+                            <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
+                            <p className='BoxText'>Event Name: {events.EName}</p>
+                            {console.log(new Date(events.Date))}
+                            <p className='BoxText'>Time of Event: {events.Date}</p>
+                            <p className='BoxText'>Point Amount: {events.Points}</p>
+                            <p className='BoxText'>Event Description: {events.EBio}</p>
                         </div>
                     ))}
                 </>
@@ -56,7 +58,7 @@ function AdminEvents() {
         <div className='Admin'>
             {/* Search Bar */}
             <form>
-                <input required className='Search2' placeholder='Enter Event Name Here' onChange={(e) => setSearch(e.target.value)} />
+                <input required className='Search2' placeholder='Search for Event Name Here' onChange={(e) => setSearch(e.target.value)} />
             </form>
             <br></br>
             {/* Add New Event Button */}
@@ -66,5 +68,5 @@ function AdminEvents() {
             {getEvents()}
         </div>
     );
-}
+};
 export default AdminEvents;

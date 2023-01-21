@@ -14,7 +14,7 @@ const NewAccount = () => {
         const isAdmin = document.getElementById("isAdmin").options[document.getElementById("isAdmin").selectedIndex].value;
         const grade = document.getElementById("grade").options[document.getElementById("grade").selectedIndex].value;
         axios
-          .post('http://localhost:3001/newaccount', {username, password, isAdmin, firstname, lastname, grade, points: 0})
+          .post("http://localhost:3001/newaccount", {username, password, isAdmin, firstname, lastname, grade, points: 0})
           .then((res) => {
             let Message = res.data.message;
             console.log(Message);
@@ -22,7 +22,7 @@ const NewAccount = () => {
               document.getElementById("message").innerText = Message;
             }
             if (Message === "Account Created") {
-              window.location.replace('http://localhost:3000');
+              window.open("http://localhost:3000", "_self");
             }
           })
           .catch(err => {

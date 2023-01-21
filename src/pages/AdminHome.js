@@ -1,5 +1,4 @@
 import '../css/AdminHome.css';
-import { useLocation } from 'react-router-dom'
 function AdminHome() {
     return (
         <div id="AdminHome">
@@ -16,5 +15,5 @@ function AdminHome() {
             </div>
         </div>
     );
-}
+};
 export default AdminHome;

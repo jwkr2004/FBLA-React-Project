@@ -1,7 +1,7 @@
 import '../css/login.css';
-import axios, { Axios } from "axios";
-import { useEffect } from 'react';
+import axios from "axios";
 import React, { useState } from 'react';
+
 //Login Page
 const Login = () => {
   const [bool, setBool] = useState(false);
@@ -33,7 +33,7 @@ const Login = () => {
       document.getElementById("message").innerText = err.message;
     });
   }
-  //
+
   const showPassword = () => {
     if(bool === false) {
       document.getElementById("showPassword").textContent = "Hide";

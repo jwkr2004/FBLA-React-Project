@@ -9,7 +9,6 @@ const NewEvent = () => {
   const [Points, setPoints] = useState("");
   const [Time, setTime] = useState("");
   const [Date, setDate] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
 
   function SubmitForm(e) {
     e.preventDefault();
