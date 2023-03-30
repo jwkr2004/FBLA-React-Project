@@ -1,7 +1,7 @@
 # Student Event Tracker
 Student Event Tracker is a website that you can track students points if they joined events and it can show them what events they can join. This was created for FBLA 2022-2023 competitions.
 
-## Requirments
+## Requirements
 This website requires the following modules:
 
 - [nodemon](https://www.npmjs.com/package/nodemon)
