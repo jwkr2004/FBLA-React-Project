@@ -12,7 +12,7 @@ const EventsSchema = new mongoose.Schema({
     Points: {
         type: Number
     },
-    Date: {
+    DateandTime: {
         type: Date
     }
 });

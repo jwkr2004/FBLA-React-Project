@@ -99,4 +99,11 @@ a{
     color: red;
     font-size: 1.3rem;
     padding: 0% 0% 3% 0%;
+    margin: 2% 0 2%;
+}
+
+.WelcomeMessage {
+    margin: 3%;
+    color: black;
+    text-align: center;
 }

@@ -1,8 +1,8 @@
 const NoPage = () => {
     return (
-        <div id="NoPage">
+        <div className="return">
             <h2>No Page Found!</h2>
-            <a className="basicButton" href="/">Back To Home</a>
+            <a className="button" href="/">Back To Home</a>
         </div>
     );
 }

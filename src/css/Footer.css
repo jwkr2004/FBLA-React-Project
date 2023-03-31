@@ -19,10 +19,9 @@ footer{
     right: 0;
     background-color: rgb(192, 75, 75);
     border-top: solid 2px black;
-    text-align: center;
     height: auto;
     width: 100vw;
-    margin-top: 40px;
-    margin: auto;
+    margin: 20px auto 0;
     color: white;
+    /* text-align: center; */
 }

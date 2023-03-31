@@ -1,7 +1,6 @@
 import '../css/login.css';
 import axios from "axios";
 import React, { useState } from 'react';
-
 //Login Page
 const Login = () => {
   const [bool, setBool] = useState(false);
@@ -33,7 +32,6 @@ const Login = () => {
       document.getElementById("message").innerText = err.message;
     });
   }
-
   const showPassword = () => {
     if(bool === false) {
       document.getElementById("showPassword").textContent = "Hide";
@@ -48,7 +46,9 @@ const Login = () => {
   }
   return (
     <>
-      <h1 className="header">Login</h1>
+      <h1 className="WelcomeMessage">Welcome to The Student Event Tracker</h1>
+      {/* <h2 className="header">Login</h2> */}
+      {/* Form To Login */}
       <form id="loginForm" className="Form" onSubmit={e => SubmitForm(e)}>
         <div className="FormDiv">
           <label>Username:</label>

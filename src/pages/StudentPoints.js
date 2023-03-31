@@ -7,6 +7,7 @@ function StudentPoints() {
     const [users, setUsers] = useState([]);
     useEffect(() => {
         axios
+        //Gets the current Users information
             .get('http://localhost:3001/getuser')
             .then((res) => {
                 console.log(res.data);
@@ -17,6 +18,7 @@ function StudentPoints() {
             .catch(err => {
                 console.error(err);
             });
+        //Gets all Students Information
         axios
             .get('http://localhost:3001/getstudents')
             .then((res) => {
@@ -26,6 +28,7 @@ function StudentPoints() {
                 console.error(err);
             });     
     }, []);
+    //Creates the Leaderboard and Ranks the students by points
     function setLeaderboard() {
         if (users.length > 0) {
             const sortedUsers = users.sort((p1, p2) => (p1.points < p2.points) ? 1 : (p1.points > p2.points) ? -1 : 0);
@@ -46,6 +49,7 @@ function StudentPoints() {
             return(arr)
         }
     }
+    //Gets User Points and displays it
     function getPoints() {
         if (user) {
             console.log(user.points)

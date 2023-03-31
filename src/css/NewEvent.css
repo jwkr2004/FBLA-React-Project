@@ -6,6 +6,12 @@
     overflow: hidden;
 }
 
+.flexd {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
 .Form {
     border: solid 2px black;
     margin: 1% auto 2% auto;
@@ -68,7 +74,7 @@
     width: fit-content;
     padding: 0% 5%;
     text-align: center;
-    margin: 1% auto;
+    margin: 1% 2%;
 }
 
 .passwordDiv {

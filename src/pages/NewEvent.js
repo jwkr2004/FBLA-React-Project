@@ -1,20 +1,21 @@
 import '../css/NewEvent.css';
 import axios from "axios";
 import React, { useState } from 'react';
-
 const NewEvent = () => {
+  //Global Variables
   const [Image, setImage] = useState("");
   const [EName, setEName] = useState("");
   const [EBio, setEBio] = useState("");
   const [Points, setPoints] = useState("");
   const [Time, setTime] = useState("");
-  const [Date, setDate] = useState("");
+  const [_Date, setDate] = useState("");
 
   function SubmitForm(e) {
     e.preventDefault();
-    //console.log(Image, EName, EBio, Points, Time, Date);
+    //Sends all of the data that the user enters and sends it to the backend
+    console.log("Time: ", Time, "Date: ", _Date)
     axios
-      .post('http://localhost:3001/newevent', { Image, EName, EBio, Points, Date: `${Date}T${Time}` })
+      .post('http://localhost:3001/newevent', { Image, EName, EBio, Points, DateandTime: `${_Date}T${Time}` })
       .then((res) => {
         let Message = res.data.message;
         console.log(Message);
@@ -32,6 +33,7 @@ const NewEvent = () => {
   return (
     <div id='NewEvent'>
       <h1 className="header">New Event</h1>
+      {/* The Form the Admin puts the New Event information */}
       <form id="signupForm" className="Form" onSubmit={e => SubmitForm(e)}>
         <div className="FormDiv">
           <label>Image URL:</label>

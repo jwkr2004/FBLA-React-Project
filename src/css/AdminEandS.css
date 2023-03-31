@@ -1,3 +1,7 @@
+.Center {
+    text-align: center;
+}
+
 .Admin{
     padding: 0% 0% 5% 0%;
     margin: 0%;
@@ -36,6 +40,7 @@
 }
 .AdminB{
     background-color: #C04B4B;
+    text-align: center;
     color: white;
     border-radius: 10px;
     padding: .5% 1% .5% 1%;
@@ -52,6 +57,14 @@
     padding: 1%;
     margin: 0 auto;
 }
+.ButtonsDiv{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width:80%;
+    padding: 1%;
+    margin: 0 auto;
+}
 .Boxs{
     border: black solid 2px;
     border-radius: 10px;
@@ -60,6 +73,13 @@
     font-size: 20px;
     color: White;
     padding: .1% 2% 1% 2%;
+    cursor: pointer;
+}
+.Boxs:hover{    
+    opacity: 0.95;
+}
+.Boxs:active{    
+    opacity: 0.90ad;
 }
 .Boxs img{
     width: 200px;
@@ -120,4 +140,48 @@
     border: 2px black solid;
     border-radius: 10px;
     color: grey;
+}
+.DownloadB{
+    width: fit-content;
+    background-color: #C04B4B;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    padding: .5% 1% .5% 1%;
+    text-decoration: none;
+    font-size: 23px;
+    cursor: pointer;
+    margin: 0 2%
+}
+
+.ReportGrid {
+    background-color: rgb(70, 70, 70);
+    overflow: visible;
+    width: 80%;
+    padding: 0%;
+    margin: 0 auto 2%;
+    text-align: center;
+    border-left: solid 2px rgb(70, 70, 70);
+    border-right: solid 2px rgb(70, 70, 70);
+    border-spacing: 2px 2px;
+    padding: 1px;
+}
+
+.ReportGrid th {
+    background-color: rgb(70, 70, 70);
+    border: solid 1px rgb(70, 70, 70);
+    color: white;
+}
+
+.ReportGrid tr {
+    background-color: #C04B4B;
+    color: white;
+}
+#signupForm{
+    padding: 0% 0% 0.5% 0%;
+}
+
+th:hover {
+    background-color: rgba(85, 85, 85);
+    border: solid 1px white;
 }

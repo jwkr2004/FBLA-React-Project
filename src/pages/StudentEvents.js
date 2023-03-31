@@ -45,14 +45,29 @@ function StudentEvents() {
             });
         }
     }
+    function getEventsTime(time) {
+        const daysofweek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var date = new Date(time);
+        let hour = date.getHours();
+        let moa = "AM";
+        if(hour > 12) {
+            hour -= 12;
+            moa = "PM";
+        }
+        let minutes = date.getMinutes();
+        if(minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        return daysofweek[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear() + ", " + hour + ":" + minutes + " " + moa;
+    }
     //Displays all events
     function getEvents() {
         if (data) {
-            console.log(data)
             return (
                 <>
                     {data.map((events, index) => (
-                        <div className='BoxSE3' id='BoxSE33'>
+                        <div className='BoxSE3' id='BoxSE33' key={index}>
                             <img src={events.Image} alt={events.EName} width='250px' height='160px' className='StudentEventIMG' />
                             <p className='pushinpp'><b>{events.EName}</b>: {events.EBio} <br></br><br></br>This will reward you <b>{events.Points}</b> points!</p>
                             <br></br>

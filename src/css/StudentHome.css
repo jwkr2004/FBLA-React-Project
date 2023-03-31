@@ -27,7 +27,8 @@
     font-size: 20;
 }
 .button2:hover{
-    background-color: grey;
+    background-color: rgb(79, 79, 79);
+    color: White;
 }
 .Box2 {
     float: left;

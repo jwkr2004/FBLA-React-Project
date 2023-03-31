@@ -4,11 +4,13 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 function AdminStudents() {
     const [data, setData] = useState();
+    const [title, setTitle] = useState();
     const [search, setSearch] = useState();
+    const [reportNumber, setReportNumber] = useState(0);
     const [filter, setFilter] = useState("First Name");
     useEffect(() => {
         axios
-        // Getting all Student in Database
+            // Getting all Student in Database
             .get('http://localhost:3001/getstudents')
             .then((res) => {
                 setData(res.data);
@@ -18,6 +20,21 @@ function AdminStudents() {
                 console.error(err);
             });
     }, []);
+    useEffect(() => {
+        console.log(reportNumber)
+        if(reportNumber > 0 && data) {
+            axios
+            // Generates a Report
+            .post('http://localhost:3001/generatereport', {data, title})
+            .then((res) => {
+                setTitle()
+                //console.log(res.data)
+            })
+            .catch(err => {
+                console.error(err);
+            });
+        }
+    }, [reportNumber]);
     function getStudents() {
         if (search && data) {
             // Displays sorted and searched events
@@ -27,7 +44,7 @@ function AdminStudents() {
                     {data.map((users, index) => (
                         (filter === "Grade") ? (
                             (String(users[Sort]).includes(search)) ? (
-                                <div className='Boxs' key={index}>
+                                <div className='Boxs' key={users._id} onClick={() => window.open(`/EditAccount?uid=${users._id}`, "_self")}>
                                     <p className='BoxText'>Name: {users.lastname}, {users.firstname}</p>
                                     <p className='BoxText'>Username: {users.username}</p>
                                     <p className='BoxText'>Points: {users.points}</p>
@@ -36,7 +53,7 @@ function AdminStudents() {
                             ) : (<></>)
                         ) : (
                                 (users[Sort.replace(/\s+/g, '')].toLowerCase().includes(search.toLowerCase())) ? (
-                                <div className='Boxs' key={index}>
+                                <div className='Boxs' key={users._id} onClick={() => window.open(`/EditAccount?uid=${users._id}`, "_self")}>
                                     <p className='BoxText'>Name: {users.lastname}, {users.firstname}</p>
                                     <p className='BoxText'>Username: {users.username}</p>
                                     <p className='BoxText'>Points: {users.points}</p>
@@ -52,7 +69,7 @@ function AdminStudents() {
             return (
                 <>
                     {data.map((users, index) => (
-                        <div className='Boxs' key={index}>
+                        <div className='Boxs' key={users._id} onClick={() => window.open(`/EditAccount?uid=${users._id}`, "_self")}>
                             <p className='BoxText'>Name: {users.lastname}, {users.firstname}</p>
                             <p className='BoxText'>Username: {users.username}</p>
                             <p className='BoxText'>Points: {users.points}</p>
@@ -69,19 +86,21 @@ function AdminStudents() {
     // Creates and downloads a report
     function CreateReport() {
         if(data) {
-            var date = new Date();
-            const fileData = JSON.stringify(data, null, "\t");
-            const blob = new Blob([fileData], { type: "text/plain" });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.download = "StudentReport-" + date +".txt";
-            link.href = url;
-            link.click();
+            // var date = new Date();
+            // const fileData = JSON.stringify(data, null, "\t");
+            // const blob = new Blob([fileData], { type: "text/plain" });
+            // const url = URL.createObjectURL(blob);
+            // const link = document.createElement("a");
+            // link.download = "StudentReport-" + date +".txt";
+            // link.href = url;
+            // link.click();
+            var val = window.prompt("Enter a Report Title:");
+            setTitle(val);
+            setReportNumber(reportNumber + 1);
         }
         else {
             window.alert("Cannot generate report");
-        }
-        
+        }   
     }
     // Generates winners for each grade level
     function GenerateWinners() {
@@ -106,7 +125,6 @@ function AdminStudents() {
                 string += `Grade ${index+9}: \nRandom Winner: ${rndWinner.username}\nPoint Count: ${rndWinner.points}\n\nMost Points Winner: ${topPoints.username}\nPoint Count: ${topPoints.points}\n------------------------------\n`
             });
             string += "Available Prizes: " + prizeList;
-
             var date = new Date();
             const blob = new Blob([string], { type: "text/plain" });
             const url = URL.createObjectURL(blob);
@@ -123,10 +141,11 @@ function AdminStudents() {
         <div className='Admin'>
             <form>
                 {/* Search Bar and DropDown Menu Filter */}
-                <input required className='Search' placeholder={`Enter Student By ${filter} Here`} onChange={(e) => setSearch(e.target.value)}></input>
+                <input required className='Search' placeholder={`Search By ${filter}`} onChange={(e) => setSearch(e.target.value)}></input>
                 <select className='Filter' id="filter" onChange={(e) => setFilter(e.target.value)}>
                     <option value={"First Name"}>First Name</option>
                     <option value={"Last Name"}>Last Name</option>
+                    <option value={"Username"}>Username</option>
                     <option value={"Grade"}>Grade</option>
                 </select>
             </form>
@@ -134,11 +153,11 @@ function AdminStudents() {
             {/* Buttons to Create New Account, Report and Generate a Report */}
             <div className='ButtonsA'>
                 <a href='/newaccount' className='AdminB'>Add New Account +</a>
-                <a href="/AdminStudents" onClick={() => CreateReport()} className='AdminB'>Create Report <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-arrow-bar-down" viewBox="-2 -5 20 20"><path fillRule="evenodd" d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6z" /></svg></a>
+                <a href="/AdminStudents" onClick={() => CreateReport()} className='AdminB'>Generate Report <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-arrow-bar-down" viewBox="-2 -5 20 20"><path fillRule="evenodd" d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6z" /></svg></a>
                 <a href="/AdminStudents" onClick={() => GenerateWinners()} className='AdminB'>Generate Winners</a>
             </div>
             {getStudents()}
         </div>
     );
-};
+}
 export default AdminStudents;

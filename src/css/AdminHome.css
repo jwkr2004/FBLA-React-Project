@@ -30,7 +30,13 @@
     font-size: 18px;
 }
 .button:hover{
-    background-color: grey;
+    background-color: rgb(79, 79, 79);
+    color: white;
+    transition: all 0.15s;
+}
+.button:active{
+    background-color: white;
+    color: black;
 }
 #box1{
     float:left;

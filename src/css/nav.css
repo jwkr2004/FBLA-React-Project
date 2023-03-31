@@ -23,7 +23,10 @@ nav {
     border-radius: 10px;
     width: 120px;
     text-align: center;
-    margin: 0 3%;
+    margin: 0.2% 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navButton:link {
@@ -38,6 +41,7 @@ nav {
 .navButton:hover {
     color: white;
     background-color: rgb(79, 79, 79);
+    transition: all 0.15s;
 }
 
 .navButton:active {

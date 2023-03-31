@@ -16,7 +16,7 @@ function StudentHome() {
             });
     }, []);
     function NewEvents() {
-        // Gets Three Newest Events and Displays them
+        // Gets the three newest events and displays them
         if (data) {
             console.log(data)
             var arr = [];

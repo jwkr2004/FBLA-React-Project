@@ -1,15 +1,13 @@
 import axios from "axios";
 import { useEffect } from 'react';
 import { useState } from 'react';
-
 const Main = () => {
     const [user, setUser] = useState();
-    //const [btnArr, setBtnArr] = useState();
+    //Gets the current user from the backend
     useEffect(() => {
         axios
             .get('http://localhost:3001/getuser')
             .then((res) => {
-                //console.log(res.data);
                 if(res.data.user) {
                     setUser(res.data.user);
                 }
@@ -21,13 +19,7 @@ const Main = () => {
                 console.error(err);
             });
     }, []);
-    /*function urlGet(url) {
-        axios
-            .get(`http://localhost:3001${url}`)
-            .catch(err => {
-                console.error(err);
-            });
-    }*/
+    //Redirects the user to the appropriate page. Ex: Login or Home page
     useEffect(() => {
         console.log(user)
         if(user) {
@@ -43,5 +35,4 @@ const Main = () => {
         }
     }, [user]);
 }
-
 export default Main;
