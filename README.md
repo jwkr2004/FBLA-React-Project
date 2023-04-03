@@ -1,6 +1,15 @@
 # Student Event Tracker
 Student Event Tracker is a website that you can track students points if they joined events and it can show them what events they can join. This was created for FBLA 2022-2023 competitions.
 
+## Build Status
+There should be no errors throughout the code and everthing should be working.
+
+## Tech/Framework used
+We used Visual Studio Code to Test and program the website. We also used MongoDB to store all of the data.
+
+## Features
+This website is 
+
 ## Requirements
 This website requires the following modules:
 
