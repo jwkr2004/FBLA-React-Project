@@ -8,10 +8,10 @@ There should be no errors throughout the code and everthing should be working.
 We used Visual Studio Code to Test and program the website. We also used MongoDB to store all of the data.
 
 ## Features
-This website is 
+This website has many features like a login system, tracking user active, creating and storing data in a database.
 
 ## Requirements
-This website requires the following modules:
+Install Node on the desktop first. Then install the following the following node modules:
 
 - [nodemon](https://www.npmjs.com/package/nodemon)
 - [Express](https://expressjs.com/)
@@ -27,10 +27,10 @@ This website requires the following modules:
 - [CookieParser](https://www.npmjs.com/package/cookie-parser)
 
 ## Installation
-Install as you would normally but install all the node modules in the list above in the terminal.
+Install all of the modules in the node terminal.
 
 ## Configuration
-First you open a terminal in the backend folder and then type "Npm run dev". Then open a second terminal that in the main folder and type "Npm start"
+First you open a terminal in the backend folder and then type "Npm run dev". Then open a second terminal that in the main folder and type "Npm start".
 
 ## Troubleshooting
 
