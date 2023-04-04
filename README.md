@@ -13,6 +13,7 @@ This website has many features like a login system, tracking user active, creati
 ## Requirements
 Install Node on the desktop first. Then install the following the following node modules:
 
+- [node](https://nodejs.org/en)
 - [nodemon](https://www.npmjs.com/package/nodemon)
 - [Express](https://expressjs.com/)
 - [React](https://reactjs.org/)
@@ -34,7 +35,7 @@ First you open a terminal in the backend folder and then type "Npm run dev". The
 
 ## Troubleshooting
 
-If the page does not start make sure you have installed all the modules and connect to the mongoose database.
+If the page does not start make sure you have installed all the modules and that it is connected to the [Mongo database](https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_general-phrase_prosp-brand_gic-null_ww-multi_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=p&utm_ad_campaign_id=11295578158&adgroup=116363205048&cq_cmp=11295578158&gclid=Cj0KCQjwla-hBhD7ARIsAM9tQKsM9K9cEUZiEyYTC1bGeTK9P_uLZIG0CHSVaaDxnq8R8JTowDA5zokaAv-HEALw_wcB).
 
 ## Created By
 
