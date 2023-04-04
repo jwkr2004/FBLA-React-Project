@@ -11,7 +11,6 @@ function SetNavBar() {
         axios
             .get('http://localhost:3001/getuser')
             .then((res) => {
-                //console.log(res.data);
                 if(res.data.user) {
                     setUser(res.data.user);
                 }
@@ -39,7 +38,7 @@ function SetNavBar() {
             }
         }
         else {
-            setBtnArr([/*{ title: "Welcome to the Student Event Tracker!", Link: "/login" },*/ { title: "Help Menu", Link: "/help" }]);
+            setBtnArr([{ title: "Help Menu", Link: "/help" }]);
         }
     }, [user]);
     // Displays The NavBar

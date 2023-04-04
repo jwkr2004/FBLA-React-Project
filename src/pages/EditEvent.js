@@ -1,7 +1,6 @@
 import '../css/NewEvent.css';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
 const EditEvent = () => {
   //Global Variables
   const [Image, setImage] = useState("");
@@ -20,11 +19,9 @@ const EditEvent = () => {
         let Message = res.data.message;
 
         if (Message === "Event Not Found") {
-          // document.getElementById("message").innerText = Message;
           window.location.replace('http://localhost:3000/AdminEvents');
         }
         let event = res.data.event[0];
-        //console.log(event);
         if (event !== undefined) {
           setImage(event.Image);
           setEName(event.EName);
@@ -55,7 +52,7 @@ const EditEvent = () => {
       .catch(err => {
         console.error(err);
       });
-  }, []);
+  }, [eid]);
 
   function SubmitForm(e) {
     e.preventDefault();

@@ -1,9 +1,7 @@
-//import '../css/Reports.css';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-//import { useParams } from 'react-router-dom';
 function ViewReport() {
-    const [grid, setGrid] = useState(false);
+    const [grid, setGrid] = useState(true);
     const [data, setData] = useState();
     const queryParameters = new URLSearchParams(window.location.search);
     const rid = queryParameters.get("rid");
@@ -15,19 +13,17 @@ function ViewReport() {
                 if (res.data.message) {
                     document.getElementById("message").innerText = Message;
                 }
-                 console.log(res.data);
                 setData(res.data.report[0]);
             })
             .catch(err => {
                 console.error(err);
             });
-    }, []);
+    }, [rid]);
     function DownloadReport() {
         if (data.accounts) {
             let string = "";
             data.accounts.forEach((val, index) => {
                 string += `Student: ${val._id}\n\nFirstname: ${val.firstname}\nLastname: ${val.lastname}\nUsername: ${val.username}\nGrade: ${val.grade}\nPoints: ${val.points}\n\n\n`
-                // string += `Firstname: ${val.firstname}\nLastname: ${val.lastname}\nUsername: ${val.username}\nGrade: ${val.grade}\nPoints: ${val.points}\nStudentID: ${val._id}\n\n\n`
             });
             const blob2 = new Blob([string], { type: "text/plain" });
             const url = URL.createObjectURL(blob2);

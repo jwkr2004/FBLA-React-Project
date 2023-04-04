@@ -18,7 +18,6 @@ function StudentHome() {
     function NewEvents() {
         // Gets the three newest events and displays them
         if (data) {
-            console.log(data)
             var arr = [];
             var int = data.length - 1;
             var i;
@@ -30,7 +29,7 @@ function StudentHome() {
             }
             for (; i > 0; i--) {
                 arr.push(
-                    <div className='Box2'>
+                    <div className='Box2' key={"index" + i}>
                         <p><b>{data[int].EName}</b><br></br>This will reward you {data[int].Points}!</p>
                         <img src={data[int].Image} alt={data[int].EName} width='100%' height='70%' className='HomeImg' />
                         <br></br>

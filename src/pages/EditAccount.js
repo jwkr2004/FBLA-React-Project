@@ -1,10 +1,8 @@
 import '../css/login.css';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
 const EditAccount = () => {
   //Global Variables
-  const [bool, setBool] = useState(false);
   const [username, setUsername] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -18,7 +16,6 @@ const EditAccount = () => {
       .then((res) => {
         let Message = res.data.message;
         if (Message === "User Not Found") {
-          // document.getElementById("message").innerText = Message;
           window.location.replace('http://localhost:3000/AdminStudents');
         }
         let user = res.data.user[0];
@@ -43,6 +40,9 @@ const EditAccount = () => {
             case 12:
               document.getElementById("grade").options[4].setAttribute("selected", "");
             break;
+            default:
+              document.getElementById("grade").options[0].setAttribute("selected", "");
+            break;
           }
 
           if(user.isAdmin === false) {
@@ -56,7 +56,7 @@ const EditAccount = () => {
       .catch(err => {
         console.error(err);
       });
-  }, []);
+  }, [uid]);
 
   function accountDelete() {
     var conf = window.confirm("Are you sure that you want to delete this account?");
@@ -100,19 +100,6 @@ const EditAccount = () => {
           console.error(err);
         });
   }
-  //Button to show Password
-  const showPassword = () => {
-    if(bool === false) {
-      document.getElementById("showPassword").textContent = "Hide";
-      document.getElementById("password").type = "text";
-      setBool(true);
-    }
-    else if(bool === true) {
-      document.getElementById("showPassword").textContent = "Show";
-      document.getElementById("password").type = "password";
-      setBool(false);
-    }
-  }
   return (
     <div id='EditAccount'>
       <h1 className="header">Edit Account</h1>
@@ -130,13 +117,6 @@ const EditAccount = () => {
             <label>Username:</label>
             <input id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required/>
           </div>
-          {/* <div className="FormDiv">
-            <label>Password:</label>
-            <div className="passwordDiv">
-              <input id="password" name="password" type="password" onChange={(e) => setPassword(e.target.value)} required/>
-              <button className="Button" id="showPassword" type="button" onClick={() => showPassword()}>Show</button>
-            </div>
-          </div> */}
           <div className="FormDiv">
             <label>Points:</label>
             <input id="Points" name="Points" type="text" value={points} onChange={(e) => setPoints(e.target.value)} required />

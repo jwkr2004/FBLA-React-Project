@@ -1,3 +1,4 @@
+/* eslint-disable */
 import '../css/AdminEandS.css';
 import axios from "axios";
 import { useEffect } from 'react';
@@ -21,7 +22,6 @@ function AdminStudents() {
             });
     }, []);
     useEffect(() => {
-        console.log(reportNumber)
         if(reportNumber > 0 && data) {
             axios
             // Generates a Report
@@ -86,14 +86,6 @@ function AdminStudents() {
     // Creates and downloads a report
     function CreateReport() {
         if(data) {
-            // var date = new Date();
-            // const fileData = JSON.stringify(data, null, "\t");
-            // const blob = new Blob([fileData], { type: "text/plain" });
-            // const url = URL.createObjectURL(blob);
-            // const link = document.createElement("a");
-            // link.download = "StudentReport-" + date +".txt";
-            // link.href = url;
-            // link.click();
             var val = window.prompt("Enter a Report Title:");
             setTitle(val);
             setReportNumber(reportNumber + 1);

@@ -10,7 +10,6 @@ function StudentEvents() {
         axios
             .get('http://localhost:3001/getuser')
             .then((res) => {
-                //console.log(res.data);
                 if (res.data.user) {
                     setUser(res.data.user);
                 }
@@ -44,22 +43,6 @@ function StudentEvents() {
                 console.error(err);
             });
         }
-    }
-    function getEventsTime(time) {
-        const daysofweek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var date = new Date(time);
-        let hour = date.getHours();
-        let moa = "AM";
-        if(hour > 12) {
-            hour -= 12;
-            moa = "PM";
-        }
-        let minutes = date.getMinutes();
-        if(minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        return daysofweek[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear() + ", " + hour + ":" + minutes + " " + moa;
     }
     //Displays all events
     function getEvents() {

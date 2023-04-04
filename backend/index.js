@@ -6,21 +6,16 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const CookieParser = require("cookie-parser");
-
 // Creates a variable to call the express module
 const app = express();
-
 // Defines the paths for the Schemas used
 const Accounts = require("./model/AccountSchema");
 const Events = require("./model/EventsSchema");
 const Reports = require("./model/ReportSchema");
-
 // Defines the location of the database
 const url = "mongodb://localhost:27017/EventTrackerDB";
-
 // Sets the number of saltrounds for password hashing
 const saltRounds = 10;
-
 // Connnects to the MongoDB Database using Mongoose
 mongoose
     .set('strictQuery', true)
@@ -40,21 +35,10 @@ app.use(
       credentials: true,
     })
 );
-
-// backupProcess.on('exit', (code, signal) => {
-//     if(code) 
-//         console.log('Backup process exited with code ', code);
-//     else if (signal)
-//         console.error('Backup process was killed with singal ', signal);
-//     else 
-//         console.log('Successfully backedup the database')
-// });
-
 // Adds JSON, CookieParser, and BodyParser functionality
 app.use(express.json());
 app.use(CookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
-
 // Defines the properties for the session when a user logs in
 app.use(session({
     key: "UserID",
@@ -64,14 +48,14 @@ app.use(session({
     // Sets up the session's cookie and sets it to expire in 1 hour
     cookie: {expires: 60 * 60 * 1000, secure: false}
 }));
-
+//Generates a report
 app.post("/generatereport", (req, res) => {
     var date = new Date();
     var data = new Reports({time: date, accounts: req.body.data, title: req.body.title});
     data.save();
     res.send({ message: "Report Created" });
 });
-
+//Get all reports that where created
 app.get("/getreports", (req, res) => {
     Reports.find({}, (err, reports) => {
         if(err) {
@@ -80,7 +64,7 @@ app.get("/getreports", (req, res) => {
         res.send(reports);
     });
 });
-
+//Get the report the user clicks
 app.post("/getreportbyid", async(req, res) => {
     var rid = req.body.rid;
     console.log(rid);
@@ -94,7 +78,6 @@ app.post("/getreportbyid", async(req, res) => {
         }
     });  
 });
-
 // Upon receiving a post, creates a new event and stores it in the database
 app.post("/newevent", (req, res) => {
     // Saves the newly created event to the database
@@ -103,7 +86,7 @@ app.post("/newevent", (req, res) => {
     // Sends a message to the front-end if the event is successfully created
     res.send({ message: "Event Created" });
 });
-
+//Updates a Event
 app.post("/editevent", async(req, res) => {
     var event = req.body;
     console.log(event);
@@ -111,7 +94,7 @@ app.post("/editevent", async(req, res) => {
     data.save();
     res.send({message:"Event Updated"});
 });
-
+//Deletes a Event
 app.post("/deleteevent", async(req, res) => {
     var event = req.body;
     Events.findOneAndDelete({_id: event.eid}, (err) => {
@@ -121,7 +104,7 @@ app.post("/deleteevent", async(req, res) => {
     });
     res.send({message:"Event Deleted"});
 });
-
+//Deletes a Acco3unt
 app.post("/deleteaccount", async(req, res) => {
     var user = req.body;
     Accounts.findOneAndDelete({_id: user.uid}, (err) => {
@@ -131,7 +114,6 @@ app.post("/deleteaccount", async(req, res) => {
     });
     res.send({message:"Account Deleted"});
 });
-
 // Adds the new account to the database and hashes the password
 app.post("/newaccount", (req, res) => {
     // Checks the database to see if the username entered already exists
@@ -158,14 +140,14 @@ app.post("/newaccount", (req, res) => {
         };
     });
 });
-
+//Updates a account 
 app.post("/editaccount", async(req, res) => {
     var user = req.body;
     var data = await Accounts.findOneAndUpdate({_id: user.uid}, {username:user.username, isAdmin:user.isAdmin, firstname:user.firstname, lastname:user.lastname, grade:user.grade, points:user.points})
     data.save();
     res.send({message:"Account Updated"});
 });
-
+//Deletes a Account
 app.post("/deleteaccount", async(req, res) => {
     var user = req.body;
     Accounts.findOneAndDelete({_id: user.uid}, (err) => {
@@ -175,7 +157,6 @@ app.post("/deleteaccount", async(req, res) => {
     });
     res.send({message:"Account Deleted"});
 });
-
 // Logs the user in if the username and password entered match the username and password in the database
 app.post("/login", async(req, res) => {
     // Checks the database to see if the username entered exists
@@ -208,7 +189,6 @@ app.post("/login", async(req, res) => {
         };
     });
 });
-
 // Gets the currently logged in user
 app.get("/getuser", async(req, res) => {
     var user = req.session.user;
@@ -221,7 +201,6 @@ app.get("/getuser", async(req, res) => {
         res.send("User Not Logged In");
     };
 });
-
 // Gets the user by an ID
 app.post("/getuserbyid", async(req, res) => {
     var uid = req.body.uid;
@@ -234,14 +213,12 @@ app.post("/getuserbyid", async(req, res) => {
         }
     });  
 });
-
 // Logs the user out of their account and deletes the current session
 app.get("/logout", async(req, res) => {
     req.session.destroy();
     res.clearCookie("UserID", { path: "/" });
     res.send();
 });
-
 // Checks to see if a user is currently logged in
 app.get("/isloggedin", async(req, res) => {
     // If the cookie exists but the session does not, deletes the cookie
@@ -264,7 +241,6 @@ app.get("/isloggedin", async(req, res) => {
         };
     };
 });
-
 // Gets all students from the database
 app.get("/getstudents", async(req, res) => {
     // Adds every user to the students array if the user in the database is not an admin. Sort is also used to sort the array alphabetically
@@ -272,7 +248,6 @@ app.get("/getstudents", async(req, res) => {
     // Sends the students array of all students to the front end
     res.send(students);
 });
-
 // Gets all Events from the Database
 app.get("/getevents", async(req, res) => {
     Events.find({}, (err, events) => {
@@ -283,12 +258,10 @@ app.get("/getevents", async(req, res) => {
         res.send(events);
     });
 });
-
 app.get("/getUsers", async (req, res) => {
     const users = await Accounts.find({});
     res.send({users});
 });
-
 app.post("/geteventbyid", async(req, res) => {
     var eid = req.body.eid;
     Events.find({ _id: eid }, (err, event) => {
@@ -300,7 +273,6 @@ app.post("/geteventbyid", async(req, res) => {
         }
     })
 });
-
 app.get("/", async (req, res) => {
     Events.find({}, (err, events) => {
         if (err) {
@@ -333,7 +305,6 @@ app.post("/updatepoints", async(req, res) => {
         res.send();
     };
 });
-
 // Starts the back-end server on port 3001
 app.listen(3001, () => {
     console.log("Server running on Port 3001.");

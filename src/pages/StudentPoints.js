@@ -10,7 +10,6 @@ function StudentPoints() {
         //Gets the current Users information
             .get('http://localhost:3001/getuser')
             .then((res) => {
-                console.log(res.data);
                 if (res.data.user) {
                     setUser(res.data.user);
                 }
@@ -42,17 +41,15 @@ function StudentPoints() {
             }
             for (var i = 0; i < num; i++) {
                 arr.push(
-                    <p className='pushinp'>{sortedUsers[i].username}: {sortedUsers[i].points}</p>
+                    <p className='pushinp' key={"index" + i}>{sortedUsers[i].username}: {sortedUsers[i].points}</p>
                 )
             }
-            console.log(arr);
             return(arr)
         }
     }
     //Gets User Points and displays it
     function getPoints() {
         if (user) {
-            console.log(user.points)
             return user.points;
         }
     }

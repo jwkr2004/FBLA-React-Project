@@ -1,7 +1,6 @@
 .Center {
     text-align: center;
 }
-
 .Admin{
     padding: 0% 0% 5% 0%;
     margin: 0%;
@@ -104,7 +103,6 @@
 .dropdown {
     float: right;
     position: relative;
-    display: inline-block;
 }
 
 .dropdown-content {
@@ -179,9 +177,4 @@
 }
 #signupForm{
     padding: 0% 0% 0.5% 0%;
-}
-
-th:hover {
-    background-color: rgba(85, 85, 85);
-    border: solid 1px white;
 }

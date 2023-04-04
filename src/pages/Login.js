@@ -47,7 +47,6 @@ const Login = () => {
   return (
     <>
       <h1 className="WelcomeMessage">Welcome to The Student Event Tracker</h1>
-      {/* <h2 className="header">Login</h2> */}
       {/* Form To Login */}
       <form id="loginForm" className="Form" onSubmit={e => SubmitForm(e)}>
         <div className="FormDiv">
