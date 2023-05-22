@@ -1,4 +1,4 @@
-import '../css/StudentPoints.css';
+// import '../css/StudentPoints.css';
 import axios from "axios";
 import React, { useState } from 'react';
 import { useEffect } from 'react';

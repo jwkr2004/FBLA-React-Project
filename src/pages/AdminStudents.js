@@ -1,5 +1,5 @@
 /* eslint-disable */
-import '../css/AdminEandS.css';
+// import '../css/AdminEandS.css';
 import axios from "axios";
 import { useEffect } from 'react';
 import { useState } from 'react';

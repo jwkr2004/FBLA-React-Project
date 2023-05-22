@@ -1,4 +1,4 @@
-import '../css/nav.css';
+// import '../css/nav.css';
 import axios from "axios";
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -34,11 +34,11 @@ function SetNavBar() {
                 setBtnArr([{ title: "Home", Link: "/StudentHome" }, { title: "Your Points", Link: "/StudentPoints" }, { title: "Events", Link: "/StudentEvents" }, { title: "Log Out", Link: "/logout" }]);
             }
             else if (user.isAdmin) {
-                setBtnArr([{ title: "Home", Link: "/AdminHome" }, { title: "Student List", Link: "/AdminStudents" }, { title: "Event List", Link: "/AdminEvents" }, { title: "Reports", Link: "/Reports" }, { title: "New Account", Link: "/NewAccount" }, { title: "Log Out", Link: "/logout" }]);
+                setBtnArr([{ title: "Home", Link: "/AdminHome" }, { title: "Student List", Link: "/AdminStudents" }, { title: "Event List", Link: "/AdminEvents" }, { title: "Reports", Link: "/Reports" }, { title: "Verification", Link: "/AdminVerification" }, { title: "New Account", Link: "/NewAccount" }, { title: "Log Out", Link: "/logout" }]);
             }
         }
         else {
-            setBtnArr([{ title: "Help Menu", Link: "/help" }]);
+            setBtnArr([{ title: "Help Menu", Link: "https://github.com/jwkr2004/FBLA-React-Project" }]);
         }
     }, [user]);
     // Displays The NavBar
@@ -49,6 +49,10 @@ function SetNavBar() {
                     {btnArr.map((items, index) => (
                         <a id={`navButton${index}`} className="navButton" key={`Button${index}`} href={items.Link} onClick={() => urlGet(items.Link)}>{items.title}</a>
                     ))}
+                    <label className="switch">
+                            <input type="checkbox"/>
+                            <span className="slider round"></span>
+                    </label>
                 </nav>
             )
         }

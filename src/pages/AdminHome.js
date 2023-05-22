@@ -1,5 +1,5 @@
 /* eslint-disable */
-import '../css/AdminHome.css';
+// import '../css/AdminHome.css';
 import axios from "axios";
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -30,7 +30,7 @@ function AdminHome() {
                 const Hour = CurrentDate.getHours();
                 const Minutes = CurrentDate.getMinutes();
                 const Time = Number(Hour + "." + Minutes);
-                const BackUpTime = 9.21; 
+                const BackUpTime = 10.05; 
                 const EmptySpace = ['   Events:    '];
                 console.log(BackUpTime, Time);
                 if (Time === BackUpTime) {

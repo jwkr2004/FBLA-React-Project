@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 function Reports() {
     const [data, setData] = useState();
+    const [search, setSearch] = useState();
     useEffect(() => {
         axios
         // Getting all Student in Database
@@ -36,11 +37,13 @@ function Reports() {
         }
         return daysofweek[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear() + ", " + hour + ":" + minutes + ":" + seconds + " "+ moa;
     }
+
     if(data !== undefined) {
         if(data.length > 0) {
             return (
                 <div className="Admin">
                     <h1 className="Center">Reports</h1>
+                    <br></br>
                     {data.map((report, index) => (
                         <div className='Boxs' key={report._id} onClick={() => window.open(`/viewreport?rid=${report._id}`, "_self")}>
                             <p className='BoxText'>Report Title: {report.title}</p>

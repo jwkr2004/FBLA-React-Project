@@ -1,0 +1,845 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body {
+  margin: 0;
+  font-family: "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+
+code {
+  font-family: "Roboto", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* StudentPoints Page*/
+#StudentPoints {
+  padding: 0% 0% 5% 0%;
+  margin-bottom: 200px;
+  margin-top: 200px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.Box46 {
+  float: right;
+  padding: 5px;
+  text-align: center;
+  background-color: rgb(192, 75, 75);
+  border-radius: 10px;
+  width: 300px;
+  height: 550px;
+  color: white;
+  padding: 2%;
+  margin-right: 100px;
+  margin-bottom: 100px;
+}
+
+.Box45 {
+  float: left;
+  text-align: center;
+  background-color: rgb(192, 75, 75);
+  border-radius: 10px;
+  width: 400px;
+  height: auto;
+  color: white;
+  padding: 2%;
+  margin-left: 300px;
+}
+
+.pushinp {
+  text-align: center;
+  background-color: rgb(48, 48, 48);
+  border-radius: 10px;
+  width: 280px;
+  height: 40px;
+  color: white;
+  padding: 5% 0% 0% 0%;
+  margin: 4%;
+  font-size: 20px;
+}
+
+#leader {
+  float: right;
+  padding: 0% 13% 0% 0%;
+  margin-top: 100px;
+}
+
+#_points {
+  padding: 5% 0% 0% 30%;
+}
+
+#notpushinp {
+  font-size: 3em;
+}
+
+/* StudentHome Page*/
+#StudentHome {
+  padding: 0% 0% 5% 0%;
+  margin: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#SHead {
+  padding: 1% 1% 0% 1%;
+}
+
+.Box2 {
+  text-align: center;
+  background-color: rgb(192, 75, 75);
+  border-radius: 10px;
+  width: 200px;
+  height: 500px;
+  color: white;
+  padding: 1%;
+}
+
+.button2 {
+  background-color: White;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 2% 15%;
+  border: 1px solid white;
+  font-size: 20;
+}
+.button2:hover {
+  background-color: rgb(79, 79, 79);
+  color: White;
+}
+
+.Box2 {
+  float: left;
+  width: 346px;
+  padding: 5px;
+  margin: 20px 75px 75px 75px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.HomeImg {
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+
+/*StudentEvents Page*/
+#StudentEvents {
+  padding: 0% 0% 5% 0%;
+  margin: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.Headingg {
+  text-align: center;
+}
+
+.BoxSE {
+  float: left;
+  text-align: center;
+  background-color: rgb(192, 75, 75);
+  border-radius: 10px;
+  width: 900px;
+  height: auto;
+  color: white;
+  padding: 2%;
+  margin-left: 10%;
+  text-align: center;
+  margin-top: 3%;
+}
+
+.BoxSE2 {
+  background-color: rgb(192, 75, 75);
+  border-radius: 10px;
+  width: 80%;
+  height: auto;
+  color: white;
+  padding: 1% 1% 10%;
+  margin-left: 10%;
+  margin-top: 3%;
+  margin-bottom: 100px;
+}
+
+.pushinpp {
+  float: left;
+  width: 500px;
+  margin-left: 70px;
+  height: -200px;
+  font-size: 20px;
+}
+
+.StudentEventIMG {
+  float: left;
+  border-radius: 10px;
+}
+
+.button289 {
+  float: right;
+  background-color: rgb(48, 48, 48);
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 1% 8%;
+  border: 1px solid white;
+  font-size: 20;
+  margin-top: 25px;
+  margin-right: 20px;
+  font-size: 26px;
+}
+.button289:hover {
+  background-color: rgb(60, 60, 60);
+  cursor: pointer;
+}
+.button289:active {
+  background-color: rgb(36, 36, 36);
+  cursor: pointer;
+}
+
+.BoxSE3 {
+  background-color: rgb(192, 75, 75);
+  border-radius: 10px;
+  width: 80%;
+  height: auto;
+  color: white;
+  padding: 1% 1% 10%;
+  margin-left: 10%;
+  margin-bottom: 3%;
+}
+
+/* NewEvent Page*/
+#NewEvent {
+  padding: 0% 0% 5% 0%;
+  margin: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flexd {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.Form {
+  border: solid 2px white;
+  margin: 1% auto 2% auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgb(192, 75, 75);
+}
+.Form input {
+  font-size: 1.2rem;
+  padding: 0 1%;
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+.Form select {
+  font-size: 1.2rem;
+}
+
+.Button {
+  background-color: white;
+  color: white;
+  border: solid 1px white;
+  font-size: 1.1rem;
+  padding: 0 2%;
+  border-radius: 10px;
+  text-align: center;
+}
+.Button:hover {
+  color: white;
+  background-color: rgb(79, 79, 79);
+}
+.Button:active {
+  color: white;
+  background-color: rgb(192, 75, 75);
+}
+
+.FormDiv {
+  margin: 1%;
+  padding: 1px 2px;
+  display: flex;
+  flex-direction: column;
+}
+.FormDiv > input,
+.FormDiv > select {
+  border: solid 1px white;
+  border-radius: 8px;
+}
+
+.FormSubmit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0% 5%;
+  text-align: center;
+  margin: 1% 2%;
+}
+
+.passwordDiv {
+  display: flex;
+}
+.passwordDiv input {
+  width: 100%;
+  margin-right: 0.5%;
+  border: solid 1px white;
+  border-radius: 8px 0 0 10px;
+}
+.passwordDiv .Button {
+  border: solid 1px white;
+  border-radius: 0 10px 10px 0;
+}
+
+#Questions {
+  padding-left: 36%;
+}
+
+#message {
+  text-align: center;
+  color: red;
+  font-size: 1.3rem;
+  padding: 0% 0% 3% 0%;
+}
+
+/*NavBar*/
+.header {
+  text-align: center;
+}
+
+nav {
+  background-color: rgb(192, 75, 75);
+  padding: 1%;
+  border-bottom: solid 2px white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.navButton {
+  background-color: rgb(48, 48, 48);
+  border: solid 1px white;
+  padding: 0.5% 2%;
+  border-radius: 10px;
+  width: 120px;
+  text-align: center;
+  margin: 0.2% 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navButton:link {
+  color: white;
+  text-decoration: none;
+}
+.navButton:visited {
+  color: white;
+}
+.navButton:hover {
+  color: white;
+  background-color: rgb(60, 60, 60);
+  transition: all 0.15s;
+}
+.navButton:active {
+  color: white;
+  background-color: rgb(48, 48, 48);
+}
+
+/* Login Page*/
+#NewAccount {
+  padding: 0% 0% 5% 0%;
+  margin: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.Form {
+  border: solid 2px white;
+  margin: 1% auto 2% auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgb(192, 75, 75);
+}
+.Form input {
+  font-size: 1.2rem;
+  padding: 0 1%;
+}
+.Form select {
+  font-size: 1.2rem;
+}
+
+.Button {
+  background-color: rgb(48, 48, 48);
+  color: white;
+  border: solid 1px white;
+  font-size: 1.1rem;
+  padding: 0 2%;
+  border-radius: 10px;
+  text-align: center;
+}
+.Button:hover {
+  color: white;
+  background-color: rgb(79, 79, 79);
+}
+.Button:active {
+  color: white;
+  background-color: white;
+}
+
+.FormDiv {
+  margin: 1%;
+  padding: 1px 2px;
+  display: flex;
+  flex-direction: column;
+}
+.FormDiv > input,
+.FormDiv > select {
+  border: solid 1px white;
+  border-radius: 8px;
+}
+
+.FormSubmit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0% 5%;
+  text-align: center;
+  margin: 1% auto;
+}
+
+.passwordDiv {
+  display: flex;
+}
+.passwordDiv input {
+  width: 100%;
+  margin-right: 0.5%;
+  border: solid 1px white;
+  border-radius: 8px 0 0 10px;
+}
+.passwordDiv .Button {
+  border: solid 1px white;
+  border-radius: 0 10px 10px 0;
+}
+
+#Questions {
+  padding-left: 36%;
+}
+
+#message {
+  text-align: center;
+  color: red;
+  font-size: 1.3rem;
+  padding: 0% 0% 3% 0%;
+  margin: 2% 0 2%;
+}
+
+.WelcomeMessage {
+  margin: 3%;
+  color: white;
+  text-align: center;
+}
+
+/*Index Page*/
+.return {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2%;
+  margin: 4% auto;
+  text-align: center;
+  color: rgb(229, 83, 83);
+}
+
+.basicButton {
+  background-color: White;
+  text-decoration: none;
+  color: rgb(60, 60, 60);
+  border-radius: 10px;
+  padding: 1%;
+  border: 1px solid rgb(60, 60, 60);
+  font-size: 1rem;
+}
+.basicButton:hover {
+  transition: all 150ms;
+  background-color: rgb(60, 60, 60);
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+}
+
+/*Home Page*/
+.header {
+  text-align: center;
+}
+
+nav {
+  background-color: rgb(192, 75, 75);
+  padding: 1%;
+  border-bottom: solid 2px white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Footer Page */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(192, 75, 75);
+  border-top: solid 2px white;
+  height: auto;
+  width: 100vw;
+  margin: 20px auto 0;
+  color: white;
+  text-align: center;
+}
+
+/*AdminHome Page*/
+#AdminHome {
+  padding: 0% 0% 0.5% 0%;
+  margin: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#head {
+  padding: 1.5% 2% 1% 4%;
+  margin: 0%;
+  font-size: 1.5em;
+}
+
+.Box {
+  text-align: center;
+  background-color: rgb(192, 75, 75);
+  border-radius: 10px;
+  width: 30%;
+  height: 370px;
+  padding: 0%;
+  margin: 2% 9.8% 10% 9.8%;
+  border: 2px solid white;
+}
+
+.button {
+  background-color: rgb(48, 48, 48);
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 2% 15%;
+  border: 1px solid white;
+  font-size: 18px;
+}
+.button:hover {
+  background-color: white;
+  color: rgb(48, 48, 48);
+  border-color: rgb(48, 48, 48);
+  transition: all 0.15s;
+}
+.button:active {
+  background-color: rgb(48, 48, 48);
+  color: white;
+  border-color: white;
+}
+
+#box1 {
+  float: left;
+}
+
+#box2 {
+  float: right;
+}
+
+.Images {
+  padding-bottom: 20px;
+}
+
+/* Admin Events Page and Admin Student Page*/
+.Center {
+  text-align: center;
+}
+
+.Admin {
+  padding: 0% 0% 5% 0%;
+  margin: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.Search {
+  width: 50%;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 20px;
+  margin: 2% 2% 2% 15%;
+  padding: 0.5%;
+}
+
+.Search2 {
+  width: 67%;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 20px;
+  margin: 2% 2% 1% 15%;
+  padding: 0.5%;
+}
+
+.SearchB {
+  font-size: 20px;
+  border: 2px solid white;
+  padding: 0.5%;
+  border-radius: 10px;
+  background-color: white;
+  text-decoration: none;
+  color: white;
+}
+.SearchB:hover {
+  background-color: grey;
+  cursor: pointer;
+}
+
+.AdminB {
+  background-color: rgb(192, 75, 75);
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5% 1% 0.5% 1%;
+  text-decoration: none;
+  font-size: 23px;
+  margin-right: 5%;
+  cursor: pointer;
+}
+
+.ButtonsA,
+.ButtonsDiv {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 80%;
+  padding: 1%;
+  margin: 0 auto;
+}
+
+.Boxs {
+  border: white solid 2px;
+  border-radius: 10px;
+  margin: 3% 10% 3% 10%;
+  background-color: rgb(192, 75, 75);
+  font-size: 20px;
+  color: White;
+  padding: 0.1% 2% 1% 2%;
+  cursor: pointer;
+}
+.Boxs:hover {
+  opacity: 0.95;
+}
+.Boxs:active {
+  opacity: 0.9;
+}
+.Boxs img {
+  width: 200px;
+  height: 190px;
+  float: left;
+  padding: 1.5% 1.5% 0% 0%;
+}
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+.dropdown {
+  float: right;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  z-index: 1;
+}
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+.Filter {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 10%;
+  font-size: 20px;
+  padding: 0.5%;
+  border: 2px white solid;
+  border-radius: 10px;
+  color: grey;
+}
+
+.DownloadB {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgb(192, 75, 75);
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5% 1% 0.5% 1%;
+  text-decoration: none;
+  font-size: 23px;
+  cursor: pointer;
+  margin: 0 2%;
+}
+
+.ReportGrid {
+  background-color: rgb(70, 70, 70);
+  overflow: visible;
+  width: 80%;
+  padding: 0%;
+  margin: 0 auto 2%;
+  text-align: center;
+  border-left: solid 2px rgb(70, 70, 70);
+  border-right: solid 2px rgb(70, 70, 70);
+  border-spacing: 2px 2px;
+  padding: 1px;
+}
+.ReportGrid th {
+  background-color: rgb(70, 70, 70);
+  border: solid 1px rgb(70, 70, 70);
+  color: white;
+}
+.ReportGrid tr {
+  background-color: rgb(192, 75, 75);
+  color: white;
+}
+
+#signupForm {
+  padding: 0% 0% 0.5% 0%;
+}
+
+.requests {
+  border: white solid 2px;
+  border-radius: 10px;
+  margin: 3% 10% 3% 10%;
+  background-color: rgb(192, 75, 75);
+  font-size: 20px;
+  color: White;
+  padding: 0.1% 2% 1% 2%;
+}
+
+.AdminR {
+  border: white solid 2px;
+  border-radius: 10px;
+  background-color: rgb(192, 75, 75);
+  font-size: 20px;
+  color: White;
+  text-decoration: none;
+  padding: 0.5%;
+  margin-right: 1%;
+  cursor: pointer;
+}
+
+.requestdate {
+  float: right;
+}
+
+/* Dark Mode Button */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(48, 48, 48);
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(192, 75, 75);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: white;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px white;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* End *//*# sourceMappingURL=main.css.map */

@@ -1,4 +1,4 @@
-import '../css/StudentEvents.css';
+// import '../css/StudentEvents.css';
 import axios from "axios";
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -37,6 +37,8 @@ function StudentEvents() {
                 if (res.data.message) {
                     console.log(res.data.message);
                     document.getElementById("message").innerText = res.data.message;
+                    let element = document.getElementsByTagName("nav")[0];
+                    element.scrollIntoView({ behavior: 'smooth' });
                 }
             })
             .catch(err => {

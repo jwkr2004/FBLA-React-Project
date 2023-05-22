@@ -11,6 +11,7 @@ import EditAccount from "./pages/EditAccount";
 import AdminHome from "./pages/AdminHome";
 import AdminEvents from "./pages/AdminEvents";
 import AdminStudents from "./pages/AdminStudents";
+import AdminVerification from "./pages/AdminVerification";
 import StudentHome from "./pages/StudentHome";
 import StudentPoints from "./pages/StudentPoints";
 import StudentEvents from "./pages/StudentEvents";
@@ -61,6 +62,7 @@ const App = () => {
             <Route path="/AdminHome" element={<AdminHome />} />
             <Route path="/AdminEvents" element={<AdminEvents />} />
             <Route path="/AdminStudents" element={<AdminStudents />} />
+            <Route path="/AdminVerification" element={<AdminVerification />} />
             <Route path="/StudentHome" element={<StudentHome />} />
             <Route path="/StudentPoints" element={<StudentPoints />} />
             <Route path="/StudentEvents" element={<StudentEvents />} />

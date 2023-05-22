@@ -1,4 +1,4 @@
-import '../css/NewEvent.css';
+// import '../css/NewEvent.css';
 import axios from "axios";
 import React, { useState } from 'react';
 const NewEvent = () => {

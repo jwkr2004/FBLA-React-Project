@@ -12,6 +12,7 @@ const app = express();
 const Accounts = require("./model/AccountSchema");
 const Events = require("./model/EventsSchema");
 const Reports = require("./model/ReportSchema");
+const Requests = require("./model/RequestSchema");
 // Defines the location of the database
 const url = "mongodb://localhost:27017/EventTrackerDB";
 // Sets the number of saltrounds for password hashing
@@ -86,7 +87,7 @@ app.post("/newevent", (req, res) => {
     // Sends a message to the front-end if the event is successfully created
     res.send({ message: "Event Created" });
 });
-//Updates a Event
+//us a Event
 app.post("/editevent", async(req, res) => {
     var event = req.body;
     console.log(event);
@@ -284,26 +285,78 @@ app.get("/", async (req, res) => {
 });
 // Updates the user's points
 app.post("/updatepoints", async(req, res) => {
-    // Finds the user in the database that matches the currently logged in user
-    let doc = await Accounts.findOne({ username: req.body.user.username });
-    // If the user does not yet have the currently selected event added to their account, the event is added. Otherwise a message is sent to the front-end
-    if (!doc.events.includes(req.body.event.EName)){
-        // Adds the event to the list of events that the user is involved in
-        doc.events.push(req.body.event.EName);
-        // Updates the user's points in the database
-        doc.points = doc.points + req.body.event.Points;
-        await doc.save();
-        req.session.user.points = doc.points;
-        // Sends a message to the front-end if the user has successfully joined an event
-        res.send({ message: "Joined Event" });
+    let doc = await Requests.findOne({ Student: req.body.user.username, Event: req.body.event.EName });
+    let doc2 = await Accounts.findOne({ username: req.body.user.username });
+    if (!doc2.events.includes(req.body.event.EName) && !doc) {
+        var date = new Date();
+        var data = new Requests({ Student: req.body.user.username, Event: req.body.event.EName, Points: req.body.event.Points, Date: date });
+        await data.save();
+        res.send({ message: "Requested" });
     }
-    else if (doc.events.includes(req.body.event.EName)) {
-        // Sends a message to the front-end if the user has already joined a specific event
+    else if (doc2.events.includes(req.body.event.EName)) {
         res.send({ message: "Event Already Joined" });
+    }
+    else if(doc){
+        res.send({ message: "Event Already Requested" });
     }
     else {
         res.send();
-    };
+    }
+});
+app.post("/addPoints", async (req, res) => {
+    let request = req.body.request;
+    let doc = await Accounts.findOne({ username: request.Student });
+    if (doc) {
+        doc.events.push(request.Event);
+        doc.points = doc.points + request.Points;
+        await doc.save();
+        Requests.findOneAndDelete({ Student: request.Student, Event: request.Event }, (err) => {
+            if (err) {
+                console.error(err);
+            }
+            res.send({ message: "Joined Event" });
+        });
+    }
+    else {
+        res.send({ message: "Already Joined Event"});
+    }
+});
+app.post("/declineRequest", async (req, res) => {
+    Requests.findOneAndDelete({ Student: req.body.request.Student, Event: req.body.request.Event }, (err) => {
+        if (err) {
+            console.error(err);
+        }
+        res.send({ message: "Requested Deleted" });
+    });
+});
+
+    // // If the user does not yet have the currently selected event added to their account, the event is added. Otherwise a message is sent to the front-end
+    // if (!doc){
+    //     // Adds the event to the list of events that the user is involved in
+    //     // doc.events.push(req.body.event.EName);
+    //     // // Updates the user's points in the database
+    //     // doc.points = doc.points + req.body.event.Points;
+    //     var data = new Request(req.body.user.username, req.body.event.EName, req.body.event.Points, {});
+    //     await data.save();
+    //     // Sends a message to the front-end if the user has successfully joined an event
+    //     res.send({ message: "Requested" });
+    // }
+    // else if(doc){
+    //     // Sends a message to the front-end if the user has already joined a specific event
+    //     res.send({ message: "Event Already Requested" });
+    // }
+    // else {
+    //     res.send();
+    // };
+// Gets all the request from the database
+app.get("/getrequests", async (req, res) => {
+    Requests.find({}, (err, requests) => {
+        if (err) {
+            console.error(err);
+        }
+        // Sends all of the requests found to the front-end
+        res.send(requests);
+    });
 });
 // Starts the back-end server on port 3001
 app.listen(3001, () => {
