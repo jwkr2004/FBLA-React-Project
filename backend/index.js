@@ -14,7 +14,7 @@ const Events = require("./model/EventsSchema");
 const Reports = require("./model/ReportSchema");
 const Requests = require("./model/RequestSchema");
 // Defines the location of the database
-const url = "mongodb://localhost:27017/EventTrackerDB";
+const url = "mongodb://127.0.0.1/EventTrackerDB";
 // Sets the number of saltrounds for password hashing
 const saltRounds = 10;
 // Connnects to the MongoDB Database using Mongoose
@@ -68,9 +68,7 @@ app.get("/getreports", (req, res) => {
 //Get the report the user clicks
 app.post("/getreportbyid", async(req, res) => {
     var rid = req.body.rid;
-    console.log(rid);
     Reports.find({ _id: rid }, (err, report) => {
-        console.log(report);
         if(err) {
             res.send({message: "Report Not Found"});
         }
@@ -90,7 +88,7 @@ app.post("/newevent", (req, res) => {
 //us a Event
 app.post("/editevent", async(req, res) => {
     var event = req.body;
-    console.log(event);
+    // console.log(event);
     var data = await Events.findOneAndUpdate({_id: event.eid}, {Image:event.Image, EName:event.EName, EBio:event.EBio, Points:event.Points, DateandTime:event.DateandTime})
     data.save();
     res.send({message:"Event Updated"});
@@ -291,7 +289,7 @@ app.post("/updatepoints", async(req, res) => {
         var date = new Date();
         var data = new Requests({ Student: req.body.user.username, Event: req.body.event.EName, Points: req.body.event.Points, Date: date });
         await data.save();
-        res.send({ message: "Requested" });
+        res.send({ message: "Event Requested" });
     }
     else if (doc2.events.includes(req.body.event.EName)) {
         res.send({ message: "Event Already Joined" });

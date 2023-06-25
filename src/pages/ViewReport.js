@@ -88,8 +88,8 @@ function ViewReport() {
                     <table className="ReportGrid">
                         <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>First Name &uarr;</th>
+                                <th>Last Name &darr;</th>
                                 <th>Username</th>
                                 <th>Points</th>
                                 <th>Grade</th>

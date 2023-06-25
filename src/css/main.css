@@ -7,6 +7,9 @@ body {
   background-color: rgb(48, 48, 48);
   color: white;
 }
+body input, body select, body option {
+  font-family: "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
 
 code {
   font-family: "Roboto", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -20,6 +23,10 @@ code {
   width: 100%;
   height: auto;
   overflow: hidden;
+}
+
+.PageTitle {
+  text-align: center;
 }
 
 .Box46 {
@@ -87,14 +94,24 @@ code {
   padding: 1% 1% 0% 1%;
 }
 
+.BoxParent {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .Box2 {
   text-align: center;
   background-color: rgb(192, 75, 75);
   border-radius: 10px;
-  width: 200px;
-  height: 500px;
+  width: -moz-fit-content;
+  width: fit-content;
   color: white;
-  padding: 1%;
+  margin: 2%;
+  padding: 1% 1%;
+}
+.Box2 img {
+  width: 300px;
 }
 
 .button2 {
@@ -109,13 +126,6 @@ code {
 .button2:hover {
   background-color: rgb(79, 79, 79);
   color: White;
-}
-
-.Box2 {
-  float: left;
-  width: 346px;
-  padding: 5px;
-  margin: 20px 75px 75px 75px;
 }
 
 .clearfix::after {
@@ -235,10 +245,19 @@ code {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  width: 500px;
   font-size: 1.2rem;
   color: white;
   background-color: rgb(192, 75, 75);
+}
+@media only screen and (min-width: 510px) {
+  .Form {
+    width: 500px;
+  }
+}
+@media only screen and (max-width: 511px) {
+  .Form {
+    width: 95vw;
+  }
 }
 .Form input {
   font-size: 1.2rem;
@@ -248,10 +267,12 @@ code {
 }
 .Form select {
   font-size: 1.2rem;
+  background-color: rgb(48, 48, 48);
+  color: white;
 }
 
 .Button {
-  background-color: white;
+  background-color: rgb(48, 48, 48);
   color: white;
   border: solid 1px white;
   font-size: 1.1rem;
@@ -261,11 +282,11 @@ code {
 }
 .Button:hover {
   color: white;
-  background-color: rgb(79, 79, 79);
+  background-color: rgb(60, 60, 60);
 }
 .Button:active {
-  color: white;
-  background-color: rgb(192, 75, 75);
+  color: rgb(48, 48, 48);
+  background-color: white;
 }
 
 .FormDiv {
@@ -280,38 +301,8 @@ code {
   border-radius: 8px;
 }
 
-.FormSubmit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0% 5%;
-  text-align: center;
-  margin: 1% 2%;
-}
-
-.passwordDiv {
-  display: flex;
-}
-.passwordDiv input {
-  width: 100%;
-  margin-right: 0.5%;
-  border: solid 1px white;
-  border-radius: 8px 0 0 10px;
-}
-.passwordDiv .Button {
-  border: solid 1px white;
-  border-radius: 0 10px 10px 0;
-}
-
 #Questions {
   padding-left: 36%;
-}
-
-#message {
-  text-align: center;
-  color: red;
-  font-size: 1.3rem;
-  padding: 0% 0% 3% 0%;
 }
 
 /*NavBar*/
@@ -367,62 +358,16 @@ nav {
   overflow: hidden;
 }
 
-.Form {
-  border: solid 2px white;
-  margin: 1% auto 2% auto;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: rgb(192, 75, 75);
-}
-.Form input {
-  font-size: 1.2rem;
-  padding: 0 1%;
-}
-.Form select {
-  font-size: 1.2rem;
-}
-
-.Button {
-  background-color: rgb(48, 48, 48);
-  color: white;
-  border: solid 1px white;
-  font-size: 1.1rem;
-  padding: 0 2%;
-  border-radius: 10px;
-  text-align: center;
-}
-.Button:hover {
-  color: white;
-  background-color: rgb(79, 79, 79);
-}
-.Button:active {
-  color: white;
-  background-color: white;
-}
-
-.FormDiv {
-  margin: 1%;
-  padding: 1px 2px;
-  display: flex;
-  flex-direction: column;
-}
-.FormDiv > input,
-.FormDiv > select {
-  border: solid 1px white;
-  border-radius: 8px;
-}
-
 .FormSubmit {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding: 0% 5%;
   text-align: center;
   margin: 1% auto;
+}
+
+.SubmitButtons {
+  margin: 1% 2%;
 }
 
 .passwordDiv {
@@ -447,7 +392,6 @@ nav {
   text-align: center;
   color: red;
   font-size: 1.3rem;
-  padding: 0% 0% 3% 0%;
   margin: 2% 0 2%;
 }
 
@@ -459,11 +403,10 @@ nav {
 
 /*Index Page*/
 .return {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 2%;
-  margin: 4% auto;
+  padding: 1%;
+  margin: 1% auto;
   text-align: center;
   color: rgb(229, 83, 83);
 }
@@ -490,19 +433,14 @@ nav {
   text-align: center;
 }
 
-nav {
-  background-color: rgb(192, 75, 75);
-  padding: 1%;
-  border-bottom: solid 2px white;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 /* Footer Page */
 footer {
   position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   bottom: 0;
   left: 0;
   right: 0;
@@ -513,6 +451,7 @@ footer {
   margin: 20px auto 0;
   color: white;
   text-align: center;
+  padding: 1%;
 }
 
 /*AdminHome Page*/
@@ -532,13 +471,42 @@ footer {
 
 .Box {
   text-align: center;
-  background-color: rgb(192, 75, 75);
   border-radius: 10px;
-  width: 30%;
-  height: 370px;
-  padding: 0%;
-  margin: 2% 9.8% 10% 9.8%;
+  margin: 3% auto;
   border: 2px solid white;
+}
+
+.imgBox {
+  background-color: rgb(192, 75, 75);
+  display: flex;
+  flex-direction: column;
+}
+.imgBox:hover {
+  background-color: rgb(202, 85, 85);
+}
+.imgBox:active {
+  background-color: rgb(212, 95, 95);
+}
+.imgBox img {
+  width: 75%;
+  margin: 2% auto 0;
+}
+.imgBox .button {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.ButtonParent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ButtonText {
+  margin: 1% auto;
+  font-size: 1.4rem;
+  color: white;
 }
 
 .button {
@@ -551,23 +519,15 @@ footer {
   font-size: 18px;
 }
 .button:hover {
-  background-color: white;
-  color: rgb(48, 48, 48);
-  border-color: rgb(48, 48, 48);
+  background-color: rgb(60, 60, 60);
+  color: white;
+  border-color: white;
   transition: all 0.15s;
 }
 .button:active {
   background-color: rgb(48, 48, 48);
   color: white;
   border-color: white;
-}
-
-#box1 {
-  float: left;
-}
-
-#box2 {
-  float: right;
 }
 
 .Images {
@@ -587,22 +547,77 @@ footer {
   overflow: hidden;
 }
 
-.Search {
-  width: 50%;
-  border-radius: 10px;
+.SearchForm {
+  margin: auto;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 747px) {
+  .SearchForm {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+.SearchForm .Search {
   border: 2px solid white;
+  border-radius: 10px;
   font-size: 20px;
-  margin: 2% 2% 2% 15%;
   padding: 0.5%;
+}
+@media only screen and (max-width: 748px) {
+  .SearchForm .Search {
+    width: 80%;
+    margin-bottom: 1%;
+  }
+}
+@media only screen and (min-width: 747px) {
+  .SearchForm .Search {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px rgb(48, 48, 48) solid;
+    width: 65%;
+  }
+}
+.SearchForm .Filter {
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 2px white solid;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 0.5%;
+  color: grey;
+}
+@media only screen and (max-width: 748px) {
+  .SearchForm .Filter {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 747px) {
+  .SearchForm .Filter {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 1px rgb(48, 48, 48) solid;
+  }
 }
 
 .Search2 {
-  width: 67%;
-  border-radius: 10px;
   border: 2px solid white;
+  border-radius: 10px;
   font-size: 20px;
-  margin: 2% 2% 1% 15%;
   padding: 0.5%;
+}
+@media only screen and (max-width: 748px) {
+  .Search2 {
+    width: 80%;
+    margin-bottom: 1%;
+  }
+}
+@media only screen and (min-width: 747px) {
+  .Search2 {
+    width: 70%;
+  }
 }
 
 .SearchB {
@@ -623,17 +638,25 @@ footer {
   background-color: rgb(192, 75, 75);
   text-align: center;
   color: white;
+  border: solid 1px white;
   border-radius: 10px;
   padding: 0.5% 1% 0.5% 1%;
   text-decoration: none;
   font-size: 23px;
-  margin-right: 5%;
+  margin: 1% 2%;
   cursor: pointer;
+}
+.AdminB:hover {
+  background-color: rgb(202, 85, 85);
+}
+.AdminB:active {
+  background-color: rgb(212, 95, 95);
 }
 
 .ButtonsA,
 .ButtonsDiv {
   display: flex;
+  flex-wrap: wrap;
   align-content: center;
   justify-content: center;
   width: 80%;
@@ -644,18 +667,24 @@ footer {
 .Boxs {
   border: white solid 2px;
   border-radius: 10px;
-  margin: 3% 10% 3% 10%;
+  width: 1000px;
+  margin: 3% auto 3% auto;
   background-color: rgb(192, 75, 75);
   font-size: 20px;
   color: White;
-  padding: 0.1% 2% 1% 2%;
+  padding: 1% 2%;
   cursor: pointer;
 }
+@media only screen and (max-width: 1046px) {
+  .Boxs {
+    width: 95vw;
+  }
+}
 .Boxs:hover {
-  opacity: 0.95;
+  background-color: rgb(202, 85, 85);
 }
 .Boxs:active {
-  opacity: 0.9;
+  background-color: rgb(212, 95, 95);
 }
 .Boxs img {
   width: 200px;
@@ -706,20 +735,7 @@ footer {
   display: block;
 }
 
-.Filter {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: 10%;
-  font-size: 20px;
-  padding: 0.5%;
-  border: 2px white solid;
-  border-radius: 10px;
-  color: grey;
-}
-
 .DownloadB {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   background-color: rgb(192, 75, 75);
@@ -734,21 +750,24 @@ footer {
 }
 
 .ReportGrid {
-  background-color: rgb(70, 70, 70);
+  background-color: white;
+  border: 1px solid white;
   overflow: visible;
   width: 80%;
   padding: 0%;
   margin: 0 auto 2%;
   text-align: center;
-  border-left: solid 2px rgb(70, 70, 70);
-  border-right: solid 2px rgb(70, 70, 70);
   border-spacing: 2px 2px;
   padding: 1px;
 }
 .ReportGrid th {
-  background-color: rgb(70, 70, 70);
-  border: solid 1px rgb(70, 70, 70);
-  color: white;
+  background-color: white;
+  border: solid 1px white;
+  color: rgb(48, 48, 48);
+}
+.ReportGrid th:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
 }
 .ReportGrid tr {
   background-color: rgb(192, 75, 75);
@@ -770,9 +789,6 @@ footer {
 }
 
 .AdminR {
-  border: white solid 2px;
-  border-radius: 10px;
-  background-color: rgb(192, 75, 75);
   font-size: 20px;
   color: White;
   text-decoration: none;
@@ -822,11 +838,11 @@ footer {
 }
 
 input:checked + .slider {
-  background-color: white;
+  background-color: rgb(230, 230, 230);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px white;
+  box-shadow: 0 0 1px rgb(230, 230, 230);
 }
 
 input:checked + .slider:before {
@@ -840,6 +856,26 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.darkModeParent {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 621px) {
+  .darkModeParent {
+    position: absolute;
+    right: 4%;
+  }
+}
+.description {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
 }
 
 /* End *//*# sourceMappingURL=main.css.map */

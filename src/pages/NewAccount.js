@@ -62,7 +62,7 @@ const NewAccount = () => {
           <div className="FormDiv">
             <label>Password:</label>
             <div className="passwordDiv">
-              <input id="password" name="password" type="password" onChange={(e) => setPassword(e.target.value)} required/>
+              <input id="password" name="password" type="password" onChange={(e) => setPassword(e.target.value)} maxlength={30} required/>
               <button className="Button" id="showPassword" type="button" onClick={() => showPassword()}>Show</button>
             </div>
           </div>
@@ -83,7 +83,7 @@ const NewAccount = () => {
               <option value="12">12</option>
             </select>
           </div>
-          <button className="FormSubmit" type="submit">Create</button>
+          <button className="FormSubmit button" type="submit">Create</button>
       </form>
       <div id="message"></div>
     </div>

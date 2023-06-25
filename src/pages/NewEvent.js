@@ -59,7 +59,7 @@ const NewEvent = () => {
           <label>Time of Event:</label>
           <input id="time" name="Time" type="time" onChange={(e) => setTime(e.target.value)} required />
         </div>
-        <button className="FormSubmit" type="submit">Create</button>
+        <button className="FormSubmit button" type="submit">Create</button>
       </form>
       <div id="message"></div>
     </div>

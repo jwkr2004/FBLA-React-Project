@@ -5,11 +5,21 @@ $base-color-lighter: rgb(60, 60, 60);
 $base-color-darker: rgb(36, 36, 36);
 $secondary-color: white;
 $primary-color: rgb(192, 75, 75);
+$primary-color-lighter: rgb(202, 85, 85);
+$primary-color-lightest: rgb(212, 95, 95);
 $primary-color_: rgb(192, 75, 75, 0.8);
+// $primary-color: rgb(210, 120, 20);
+// $primary-color-lighter: rgb(220, 130, 30);
+// $primary-color-lightest: rgb(230, 140, 40);
+// $primary-color_: rgb(210, 120, 20, 0.8);
+$light-gray: rgb(230, 230, 230);
 
 body {
     margin: 0;
     font-family: 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    input, select, option {
+        font-family: 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    }
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: $base-color;
@@ -29,6 +39,10 @@ code {
     width: 100%;
     height: auto;
     overflow: hidden;
+}
+
+.PageTitle {
+    text-align: center;
 }
 
 .Box46 {
@@ -97,14 +111,23 @@ code {
     padding: 1% 1% 0% 1%;
 }
 
+.BoxParent {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .Box2 {
     text-align: center;
     background-color: $primary-color;
     border-radius: 10px;
-    width: 200px;
-    height: 500px;
+    width: fit-content;
     color: white;
-    padding: 1%;
+    margin: 2%;
+    padding: 1% 1%;
+    img {
+        width: 300px;
+    }
 }
 
 .button2 {
@@ -120,13 +143,6 @@ code {
         background-color: rgb(79, 79, 79);
         color: White;
     }
-}
-
-.Box2 {
-    float: left;
-    width: 346px;
-    padding: 5px;
-    margin: 20px 75px 75px 75px;
 }
 
 .clearfix::after {
@@ -250,11 +266,15 @@ code {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    width: 500px;
     font-size: 1.2rem;
     color: white;
     background-color: $primary-color;
-
+    @media only screen and (min-width:510px) {
+        width: 500px;
+    }
+    @media only screen and (max-width:511px) {
+        width:95vw;
+    }
     input {
         font-size: 1.2rem;
         padding: 0 1%;
@@ -264,11 +284,13 @@ code {
 
     select {
         font-size: 1.2rem;
+        background-color: $base-color;
+        color: $secondary-color
     }
 }
 
 .Button {
-    background-color: white;
+    background-color: $base-color;
     color: $secondary-color;
     border: solid 1px $secondary-color;
     font-size: 1.1rem;
@@ -277,13 +299,13 @@ code {
     text-align: center;
 
     &:hover {
-        color: white;
-        background-color: rgb(79, 79, 79);
+        color: $secondary-color;
+        background-color: $base-color-lighter;
     }
 
     &:active {
-        color: $secondary-color;
-        background-color: $primary-color;
+        color: $base-color;
+        background-color: $secondary-color;
     }
 }
 
@@ -303,29 +325,6 @@ code {
     }
 }
 
-.FormSubmit {
-    width: fit-content;
-    padding: 0% 5%;
-    text-align: center;
-    margin: 1% 2%;
-}
-
-.passwordDiv {
-    display: flex;
-
-    input {
-        width: 100%;
-        margin-right: 0.5%;
-        border: solid 1px $secondary-color;
-        border-radius: 8px 0 0 10px;
-    }
-
-    .Button {
-        border: solid 1px $secondary-color;
-        border-radius: 0 10px 10px 0;
-    }
-}
-
 // a {
 //     text-decoration: underline;
 //     color: white;
@@ -335,13 +334,6 @@ code {
 
 #Questions {
     padding-left: 36%;
-}
-
-#message {
-    text-align: center;
-    color: red;
-    font-size: 1.3rem;
-    padding: 0% 0% 3% 0%;
 }
 
 /*NavBar*/
@@ -403,68 +395,15 @@ nav {
     overflow: hidden;
 }
 
-.Form {
-    border: solid 2px $secondary-color;
-    margin: 1% auto 2% auto;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: $primary-color;
-
-    input {
-        font-size: 1.2rem;
-        padding: 0 1%;
-    }
-
-    select {
-        font-size: 1.2rem;
-    }
-}
-
-.Button {
-    background-color: $base-color;
-    color: $secondary-color;
-    border: solid 1px $secondary-color;
-    font-size: 1.1rem;
-    padding: 0 2%;
-    border-radius: 10px;
-    text-align: center;
-
-    &:hover {
-        color: white;
-        background-color: rgb(79, 79, 79);
-    }
-
-    &:active {
-        color: $secondary-color;
-        background-color: white;
-    }
-}
-
-.FormDiv {
-    margin: 1%;
-    padding: 1px 2px;
-    display: flex;
-    flex-direction: column;
-
-    > {
-
-        input,
-        select {
-            border: solid 1px $secondary-color;
-            border-radius: 8px;
-        }
-    }
-}
-
 .FormSubmit {
     width: fit-content;
     padding: 0% 5%;
     text-align: center;
     margin: 1% auto;
+}
+
+.SubmitButtons {
+    margin: 1% 2%;
 }
 
 .passwordDiv {
@@ -498,7 +437,6 @@ nav {
     text-align: center;
     color: red;
     font-size: 1.3rem;
-    padding: 0% 0% 3% 0%;
     margin: 2% 0 2%;
 }
 
@@ -511,8 +449,8 @@ nav {
 /*Index Page*/
 .return {
     width: fit-content;
-    padding: 2%;
-    margin: 4% auto;
+    padding: 1%;
+    margin: 1% auto;
     text-align: center;
     color: rgb(229, 83, 83);
 }
@@ -541,15 +479,15 @@ nav {
     text-align: center;
 }
 
-nav {
-    background-color: $primary-color;
-    padding: 1%;
-    border-bottom: solid 2px $secondary-color;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+// nav {
+//     background-color: $primary-color;
+//     padding: 1%;
+//     border-bottom: solid 2px $secondary-color;
+//     display: flex;
+//     align-content: center;
+//     justify-content: center;
+//     flex-wrap: wrap;
+// }
 
 // .navButton {
 //     background-color: $base-color;
@@ -584,6 +522,11 @@ nav {
 
 footer {
     position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     bottom: 0;
     left: 0;
     right: 0;
@@ -594,6 +537,7 @@ footer {
     margin: 20px auto 0;
     color: white;
     text-align: center;
+    padding: 1%;
 }
 
 /*AdminHome Page*/
@@ -614,13 +558,49 @@ footer {
 
 .Box {
     text-align: center;
-    background-color: $primary-color;
+    // background-color: $primary-color;
     border-radius: 10px;
-    width: 30%;
-    height: 370px;
-    padding: 0%;
-    margin: 2% 9.8% 10% 9.8%;
+    // width: 30%;
+    // height: 370px;
+    margin: 3% auto;
     border: 2px solid $secondary-color;
+}
+
+.imgBox {
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    &:hover {
+        background-color: $primary-color-lighter;
+    }
+    &:active {
+        background-color: $primary-color-lightest;
+    }
+    img {
+        width:75%;
+        margin: 2% auto 0;
+    }
+    .button {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+
+.ButtonParent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ButtonText {
+    margin: 1% auto;
+    font-size: 1.4rem;
+    // padding: 1.5%;
+    // border-radius: 10px;
+    color: $secondary-color;
+    // background-color: $base-color;
+    // width: fit-content;
 }
 
 .button {
@@ -633,9 +613,9 @@ footer {
     font-size: 18px;
 
     &:hover {
-        background-color: $secondary-color;
-        color: $base-color;
-        border-color: $base-color;
+        background-color: $base-color-lighter;
+        color: $secondary-color;
+        border-color: $secondary-color;
         transition: all 0.15s;
     }
 
@@ -646,13 +626,13 @@ footer {
     }
 }
 
-#box1 {
-    float: left;
-}
+// #box1 {
+//     float: left;
+// }
 
-#box2 {
-    float: right;
-}
+// #box2 {
+//     float: right;
+// }
 
 .Images {
     padding-bottom: 20px;
@@ -672,22 +652,67 @@ footer {
     overflow: hidden;
 }
 
-.Search {
-    width: 50%;
-    border-radius: 10px;
-    border: 2px solid $secondary-color;
-    font-size: 20px;
-    margin: 2% 2% 2% 15%;
-    padding: .5%;
+.SearchForm {
+    margin: auto;
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media only screen and (min-width:748px) {
+        
+    }
+    @media only screen and (max-width:747px) {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .Search {
+        border: 2px solid $secondary-color;
+        border-radius: 10px;
+        @media only screen and (max-width:748px) {
+            width: 80%;
+            margin-bottom: 1%;
+        }
+        @media only screen and (min-width:747px) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: 1px $base-color solid;
+            width: 65%;
+            // margin: 2% 0% 2% 15%;
+        }
+        font-size: 20px;
+        padding: 0.5%;
+    }
+    .Filter {
+        width: fit-content;
+        // height: 10%;
+        border: 2px $secondary-color solid;
+        border-radius: 10px;
+        @media only screen and (max-width:748px) {
+            width: 70%;
+        }
+        @media only screen and (min-width:747px) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: 1px $base-color solid;
+        }
+        font-size: 18px;
+        padding: 0.5%;       
+        color: grey;
+    }
 }
 
 .Search2 {
-    width: 67%;
-    border-radius: 10px;
     border: 2px solid $secondary-color;
+    border-radius: 10px;
+    @media only screen and (max-width:748px) {
+        width: 80%;
+        margin-bottom: 1%;
+    }
+    @media only screen and (min-width:747px) {
+        width: 70%;
+    }
     font-size: 20px;
-    margin: 2% 2% 1% 15%;
-    padding: .5%;
+    padding: 0.5%;
 }
 
 .SearchB {
@@ -709,17 +734,25 @@ footer {
     background-color: $primary-color;
     text-align: center;
     color: white;
+    border: solid 1px $secondary-color;
     border-radius: 10px;
     padding: .5% 1% .5% 1%;
     text-decoration: none;
     font-size: 23px;
-    margin-right: 5%;
+    margin: 1% 2%;
     cursor: pointer;
+    &:hover {
+        background-color: $primary-color-lighter;
+    }
+    &:active {
+        background-color: $primary-color-lightest;
+    }
 }
 
 .ButtonsA,
 .ButtonsDiv {
     display: flex;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: center;
     width: 80%;
@@ -730,19 +763,23 @@ footer {
 .Boxs {
     border: $secondary-color solid 2px;
     border-radius: 10px;
-    margin: 3% 10% 3% 10%;
+    width: 1000px;
+    @media only screen and (max-width:1046px) {
+        width: 95vw;
+    }
+    margin: 3% auto 3% auto;
     background-color: $primary-color;
     font-size: 20px;
     color: White;
-    padding: .1% 2% 1% 2%;
+    padding: 1% 2%;
     cursor: pointer;
 
     &:hover {
-        opacity: 0.95;
+        background-color: $primary-color-lighter;
     }
 
     &:active {
-        opacity: 0.90;
+        background-color: $primary-color-lightest;
     }
 
     img {
@@ -798,16 +835,6 @@ footer {
     display: block;
 }
 
-.Filter {
-    width: fit-content;
-    height: 10%;
-    font-size: 20px;
-    padding: 0.5%;
-    border: 2px $secondary-color solid;
-    border-radius: 10px;
-    color: grey;
-}
-
 .DownloadB {
     width: fit-content;
     background-color: $primary-color;
@@ -822,21 +849,26 @@ footer {
 }
 
 .ReportGrid {
-    background-color: rgb(70, 70, 70);
+    background-color: $secondary-color;
+    border: 1px solid white;
     overflow: visible;
     width: 80%;
     padding: 0%;
     margin: 0 auto 2%;
     text-align: center;
-    border-left: solid 2px rgb(70, 70, 70);
-    border-right: solid 2px rgb(70, 70, 70);
+    // border-left: solid 2px rgb(70, 70, 70);
+    // border-right: solid 2px rgb(70, 70, 70);
     border-spacing: 2px 2px;
     padding: 1px;
 
     th {
-        background-color: rgb(70, 70, 70);
-        border: solid 1px rgb(70, 70, 70);
-        color: white;
+        background-color: $secondary-color;
+        border: solid 1px $secondary-color;
+        color: $base-color;
+        &:hover {
+            background-color: $light-gray;
+            cursor: pointer;
+        }
     }
 
     tr {
@@ -857,9 +889,9 @@ footer {
     padding: 0.1% 2% 1% 2%;
 }
 .AdminR{
-    border: white solid 2px;
-    border-radius: 10px;
-    background-color: rgb(192, 75, 75);
+    // border: white solid 2px;
+    // border-radius: 10px;
+    // background-color: rgb(192, 75, 75);
     font-size: 20px;
     color: White;
     text-decoration: none;
@@ -910,11 +942,11 @@ footer {
   }
   
   input:checked + .slider {
-    background-color: $secondary-color;
+    background-color: $light-gray;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px $secondary-color;
+    box-shadow: 0 0 1px $light-gray;
   }
   
   input:checked + .slider:before {
@@ -931,5 +963,26 @@ footer {
   .slider.round:before {
     border-radius: 50%;
   }
+  .darkModeParent {
+    // align-self: flex-end;
+    // margin-right: 2%;
+    @media only screen and (min-width:621px) {
+        position: absolute;
+        right: 4%;
+        // bottom: 25%;
+    }
+    @media only screen and (max-width:620px) {
 
-/* End */
+    }
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .description {
+    width: fit-content;
+    margin: auto;
+  }
+/* End */ 

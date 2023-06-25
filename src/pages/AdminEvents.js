@@ -41,10 +41,12 @@ function AdminEvents() {
                         (events.EName.toLowerCase().includes(search.toLowerCase())) ? (
                             <div className='Boxs' key={index} onClick={() => window.open(`/EditEvent?eid=${events._id}`, "_self")}>
                                 <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
-                                <p className='BoxText'>Event Name: {events.EName}</p>
-                                <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
-                                <p className='BoxText'>Point Amount: {events.Points}</p>
-                                <p className='BoxText'>Event Bio: {events.EBio}</p>
+                                <div>
+                                    <p className='BoxText'>Event Name: {events.EName}</p>
+                                    <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
+                                    <p className='BoxText'>Point Amount: {events.Points}</p>
+                                    <p className='BoxText'>Event Description: {events.EBio}</p>
+                                </div>
                             </div>
                         ) : (<></>)
                     ))}
@@ -58,10 +60,12 @@ function AdminEvents() {
                     {data.map((events, index) => (
                         <div className='Boxs' key={index} onClick={() => window.open(`/EditEvent?eid=${events._id}`, "_self")}>
                             <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
-                            <p className='BoxText'>Event Name: {events.EName}</p>
-                            <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
-                            <p className='BoxText'>Point Amount: {events.Points}</p>
-                            <p className='BoxText'>Event Description: {events.EBio}</p>
+                            <div>
+                                <p className='BoxText'>Event Name: {events.EName}</p>
+                                <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
+                                <p className='BoxText'>Point Amount: {events.Points}</p>
+                                <p className='BoxText'>Event Description: {events.EBio}</p>
+                            </div>
                         </div>
                     ))}
                 </>
@@ -72,7 +76,9 @@ function AdminEvents() {
     return (
         <div className='Admin'>
             {/* Search Bar */}
-            <form>
+            <h1 className="PageTitle">West-MEC Event Tracker</h1>
+            <h2 className="PageTitle">Events</h2>
+            <form className="SearchForm">
                 <input required className='Search2' placeholder='Search by Event Name' onChange={(e) => setSearch(e.target.value)} />
             </form>
             <br></br>

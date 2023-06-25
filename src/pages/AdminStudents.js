@@ -70,7 +70,8 @@ function AdminStudents() {
                 <>
                     {data.map((users, index) => (
                         <div className='Boxs' key={users._id} onClick={() => window.open(`/EditAccount?uid=${users._id}`, "_self")}>
-                            <p className='BoxText'>Name: {users.lastname}, {users.firstname}</p>
+                            <p className='BoxText'>Firstname: {users.firstname}</p>
+                            <p className='BoxText'>Lastname: {users.lastname}</p>
                             <p className='BoxText'>Username: {users.username}</p>
                             <p className='BoxText'>Points: {users.points}</p>
                             <p className='BoxText'>Grade Level: {users.grade}</p>
@@ -131,7 +132,9 @@ function AdminStudents() {
     }
     return (
         <div className='Admin'>
-            <form>
+            <h1 className="PageTitle">West-MEC Event Tracker</h1>
+            <h2 className="PageTitle">Students</h2>
+            <form className="SearchForm">
                 {/* Search Bar and DropDown Menu Filter */}
                 <input required className='Search' placeholder={`Search By ${filter}`} onChange={(e) => setSearch(e.target.value)}></input>
                 <select className='Filter' id="filter" onChange={(e) => setFilter(e.target.value)}>
@@ -146,7 +149,17 @@ function AdminStudents() {
             <div className='ButtonsA'>
                 <a href='/newaccount' className='AdminB'>Add New Account +</a>
                 <a href="/AdminStudents" onClick={() => CreateReport()} className='AdminB'>Generate Report <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-arrow-bar-down" viewBox="-2 -5 20 20"><path fillRule="evenodd" d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6z" /></svg></a>
-                <a href="/AdminStudents" onClick={() => GenerateWinners()} className='AdminB'>Generate Winners</a>
+                {/* <a href="/AdminStudents" onClick={() => GenerateWinners()} className='AdminB'>Generate Winners</a> */}
+                <select className="AdminB">
+                    <option value={"First Name"}>Sort By First Name</option>
+                    <option value={"Last Name"}>Sort By Last Name</option>
+                    <option value={"Username"}>Sort By Username</option>
+                    <option value={"Grade"}>Sort By Grade</option>
+                </select>
+                <select className="AdminB">
+                    <option value={"Ascending"}>Ascending</option>
+                    <option value={"Descending"}>Descending</option>
+                </select>
             </div>
             {getStudents()}
         </div>

@@ -42,7 +42,8 @@ function Reports() {
         if(data.length > 0) {
             return (
                 <div className="Admin">
-                    <h1 className="Center">Reports</h1>
+                    <h1 className="PageTitle">West-MEC Event Tracker</h1>
+                    <h2 className="PageTitle">Reports</h2>
                     <br></br>
                     {data.map((report, index) => (
                         <div className='Boxs' key={report._id} onClick={() => window.open(`/viewreport?rid=${report._id}`, "_self")}>

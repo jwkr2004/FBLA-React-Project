@@ -51,28 +51,40 @@ function AdminVerification() {
         }
     }
     function getRequests() {
-        if (data) {
-            return (
-                <>
-                    {data.map((request, index) => (
-                        <div className='requests' key={index}>
-                            <p>{request.Student} requested to join {request.Event} for {request.Points} points.</p>
-                            <p className="requestdate">{request.Date}</p>
-                            <a className='AdminR' onClick={() => Confirm(request)}>Confirm</a>
-                            <a className='AdminR' onClick={() => Decline(request)}>Decline</a>
-                        </div>
-                    ))}
-                </>
-            )
+        if (data !== undefined) {
+            if(data.length > 0) {
+                return (
+                    <>
+                        {data.map((request, index) => (
+                            <div className='requests' key={index}>
+                                <p>{request.Student} requested to join {request.Event} for {request.Points} points.</p>
+                                <p className="requestdate">{request.Date}</p>
+                                <button className='AdminR button' onClick={() => Confirm(request)}>Confirm</button>
+                                <button className='AdminR button' onClick={() => Decline(request)}>Decline</button>
+                            </div>
+                        ))}
+                    </>
+                )
+            }
+            else {
+                return(
+                    <div className="return">
+                        <h2>No Requests Available</h2>
+                        <a className="button" href="/AdminHome">Return to Home</a>
+                    </div>
+                )
+            }
         }
     }
     return (
         <div id="AdminVerification">
-            <form>
+            <h1 className="PageTitle">West-MEC Event Tracker</h1>
+            <h2 className="PageTitle">Verification</h2>
+            <form className="SearchForm">
                 <input required className='Search2' placeholder='Search by Username' onChange={(e) => setSearch(e.target.value)} />
             </form>
-            <div id="message"></div>
             {getRequests()}
+            <div id="message"></div>
         </div>
     );
 };

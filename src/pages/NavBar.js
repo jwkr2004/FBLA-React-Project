@@ -49,10 +49,6 @@ function SetNavBar() {
                     {btnArr.map((items, index) => (
                         <a id={`navButton${index}`} className="navButton" key={`Button${index}`} href={items.Link} onClick={() => urlGet(items.Link)}>{items.title}</a>
                     ))}
-                    <label className="switch">
-                            <input type="checkbox"/>
-                            <span className="slider round"></span>
-                    </label>
                 </nav>
             )
         }
