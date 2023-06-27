@@ -28,7 +28,7 @@ Install Node on the desktop first. Then install the following the following node
 - [CookieParser](https://www.npmjs.com/package/cookie-parser)
 
 ## Installation
-Install all of the modules in the node terminal. Then install MongoDB Compass[https://www.mongodb.com/try/download/compass] on your computer.
+Install all of the modules in the node terminal. Then install [MongoDB Compass](https://www.mongodb.com/try/download/compass) on your computer.
 
 ## Configuration
 First you open a terminal in the backend folder and then type "Npm run dev". Then open a second terminal that in the main folder and type "Npm start".
