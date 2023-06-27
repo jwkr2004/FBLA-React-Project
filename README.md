@@ -48,6 +48,7 @@ We used Mongoose to connect our Database to the backend node/express server.
 ![FBLA Verification SS3](https://github.com/jwkr2004/FBLA-React-Project/assets/93623064/df6711fd-cbec-4a24-b63c-ed8ec72c8b74)
 
 Then we use UseEffect and Axios to transfer data back and forth to our react and express server by get and posting on the backend server.
+
 React Server
 
 ![FBLA Verification SS4](https://github.com/jwkr2004/FBLA-React-Project/assets/93623064/15796a6b-5189-4f4f-9186-f98c65377357)
