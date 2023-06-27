@@ -37,6 +37,19 @@ First you open a terminal in the backend folder and then type "Npm run dev". The
 
 If the page does not start make sure you have installed all the modules and that it is connected to the [Mongo database](https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_general-phrase_prosp-brand_gic-null_ww-multi_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=p&utm_ad_campaign_id=11295578158&adgroup=116363205048&cq_cmp=11295578158&gclid=Cj0KCQjwla-hBhD7ARIsAM9tQKsM9K9cEUZiEyYTC1bGeTK9P_uLZIG0CHSVaaDxnq8R8JTowDA5zokaAv-HEALw_wcB).
 
+## Naviagtion
+
+There are two main folders which are backend and scr. The backend folder has the node/express server(index.js) and schema models in the model folder. Then in the scr folder is all css, pages and sass folders. Then it has the react server in the App.js and index.js files. In the pages folder is all of the pages that the student or admin will see. Also the CSS and SASS folders have a stylesheets.
+
+## Database
+
+We used Mongoose to connect our Database to the backend node/express server.
+![FBLA Verification SS3](https://github.com/jwkr2004/FBLA-React-Project/assets/93623064/df6711fd-cbec-4a24-b63c-ed8ec72c8b74)
+
+Then we use UseEffect and Axios to transfer data back and forth to our react and express server by get and posting on the backend server.
+![FBLA Verification SS4](https://github.com/jwkr2004/FBLA-React-Project/assets/93623064/15796a6b-5189-4f4f-9186-f98c65377357)
+![FBLA Verification SS5](https://github.com/jwkr2004/FBLA-React-Project/assets/93623064/e328a880-418d-46ae-b1f6-9e661e1d519d)
+
 ## Created By
 
 - Brandon Grigg
