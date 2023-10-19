@@ -63,7 +63,8 @@ function StudentHome() {
     }
     if(user !== undefined) {
         return (
-            <div id="StudentHome">
+            <div id="StudentHome" className="Margin">
+                <h1 className="PageTitle">West-MEC Event Tracker</h1>
                 <h2 id='SHead'>Welcome, {user}</h2>
                 {NewEvents()}
             </div>
@@ -71,7 +72,7 @@ function StudentHome() {
     }
     else {
         return (
-            <div id="StudentHome">
+            <div id="StudentHome" className="Margin">
                 <h2 id='SHead'>Welcome, Student</h2>
                 {NewEvents()}
             </div>

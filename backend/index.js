@@ -51,10 +51,100 @@ app.use(session({
 }));
 //Generates a report
 app.post("/generatereport", (req, res) => {
-    var date = new Date();
-    var data = new Reports({time: date, accounts: req.body.data, title: req.body.title});
-    data.save();
-    res.send({ message: "Report Created" });
+    function selectPrize(points) {
+        if(points >= 2000) {
+            return "Extra Credit"
+        }
+        else if(points >= 1000) {
+            return "Pizza Party"
+        }
+        else if(points >= 500) {
+            return "School Spirit T-Shirt"
+        }
+        else if(points >= 300) {
+            return "Cookies"
+        }
+        else if(points >= 200) {
+            return "Lanyard"
+        }
+        else if(points >= 100) {
+            return "Spirit Stickers"
+        }
+        else if(points >= 0) {
+            return "Raffle Ticket Entry"
+        }
+    }
+    Accounts.find({ isAdmin: false }, (err, data) => {
+        if(err) {
+            console.error(err)
+        }
+        var arr = [
+            {
+                prize:"",
+                name:""
+            },
+            {
+                prize:"",
+                name:""
+            },
+            {
+                prize:"",
+                name:""
+            },
+            {
+                prize:"",
+                name:""
+            },
+            {
+                prize:"",
+                name:""
+            },
+            {
+                prize:"",
+                name:""
+            },
+            {
+                prize:"",
+                name:""
+            },
+            {
+                prize:"",
+                name:""
+            }
+        ]
+        let students = {
+            grade9:[],
+            grade10:[],
+            grade11:[],
+            grade12:[]
+        };
+        data.forEach((val, index) => {
+            students[`grade${data[index].grade}`].push(data[index]);
+        });
+        var incr = 0;
+        Object.keys(students).forEach((val, index, array) => {
+            // students[val].sort((p1, p2) => (p1.points < p2.points) ? 1 : (p1.points > p2.points) ? -1 : 0);
+            // winners["g"+Number(9+Number(index))+"Most"].name = students[val][0].username;
+            // students[val].shift();
+            // winners["g"+Number(9+Number(index))+"Rand"].name = students[val][Math.floor(Math.random()*students[val].length)].username;
+            students[val].sort((p1, p2) => (p1.points < p2.points) ? 1 : (p1.points > p2.points) ? -1 : 0);
+            var mPoints = students[val][0]
+            arr[incr].name = mPoints.username;
+            arr[incr].prize = selectPrize(mPoints.points);
+            students[val].shift();     
+            incr++;
+            var random = students[val][Math.floor(Math.random()*students[val].length)]
+            arr[incr].name = random.username;
+            arr[incr].prize = selectPrize(random.points);
+            incr++;
+        });
+        var date = new Date();
+        // console.log(req.body.data);
+        var data = new Reports({time: date, accounts: req.body.data, title: req.body.title, winners:arr});
+        console.log("Test", arr);
+        data.save();
+        res.send({ message: "Report Created" });
+    });
 });
 //Get all reports that where created
 app.get("/getreports", (req, res) => {
@@ -193,7 +283,13 @@ app.get("/getuser", async(req, res) => {
     var user = req.session.user;
     // If the session exists, the user's details are sent to the front-end
     if(user !== undefined) {
-        res.send({user});
+        if(user.theme === undefined) {
+            user.theme = 'light';
+            res.send({user});
+        }
+        else {
+            res.send({user});
+        }
     }
     // If the session does not exist, a message is sent to the front-end 
     else{
@@ -346,6 +442,7 @@ app.post("/declineRequest", async (req, res) => {
     // else {
     //     res.send();
     // };
+    
 // Gets all the request from the database
 app.get("/getrequests", async (req, res) => {
     Requests.find({}, (err, requests) => {
@@ -355,6 +452,16 @@ app.get("/getrequests", async (req, res) => {
         // Sends all of the requests found to the front-end
         res.send(requests);
     });
+});
+app.post("/updateTheme", async(req, res) => {
+    let doc = req.body;
+    let doc2 = await Accounts.findOne({ username: doc.user });
+    if(doc2){
+        doc2.theme = doc.theme;
+        doc2.save();
+        await console.log(doc2.theme, "=", doc.theme);
+    }
+    console.log("Updated Account", doc2)
 });
 // Starts the back-end server on port 3001
 app.listen(3001, () => {

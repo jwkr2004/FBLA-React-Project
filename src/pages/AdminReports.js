@@ -10,7 +10,7 @@ function Reports() {
         // Getting all Student in Database
             .get('http://localhost:3001/getreports')
             .then((res) => {
-                setData(res.data);
+                setData(res.data.reverse());
             })
             .catch(err => {
                 console.error(err);
@@ -27,26 +27,29 @@ function Reports() {
             hour -= 12;
             moa = "PM";
         }
+        if(hour === 0) {
+            hour = 12;
+        }
         let minutes = date.getMinutes();
         if(minutes < 10) {
             minutes = "0" + minutes;
         }
-        let seconds = date.getSeconds();
-        if(seconds < 10) {
-            seconds = "0" + seconds;
-        }
-        return daysofweek[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear() + ", " + hour + ":" + minutes + ":" + seconds + " "+ moa;
+        // let seconds = date.getSeconds();
+        // if(seconds < 10) {
+        //     seconds = "0" + seconds;
+        // }
+        return daysofweek[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear() + ", " + hour + ":" + minutes + " "+ moa;
     }
 
     if(data !== undefined) {
         if(data.length > 0) {
             return (
-                <div className="Admin">
+                <div className="Admin Margin">
                     <h1 className="PageTitle">West-MEC Event Tracker</h1>
                     <h2 className="PageTitle">Reports</h2>
                     <br></br>
                     {data.map((report, index) => (
-                        <div className='Boxs' key={report._id} onClick={() => window.open(`/viewreport?rid=${report._id}`, "_self")}>
+                        <div className='BoxsC' key={report._id} onClick={() => window.open(`/viewreport?rid=${report._id}`, "_self")}>
                             <p className='BoxText'>Report Title: {report.title}</p>
                             <p className='BoxText'>Report Id: {report._id}</p>
                             <p className='BoxText'>Report Generated on: {getEventsTime(report.time)}</p>

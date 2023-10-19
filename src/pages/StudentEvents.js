@@ -68,13 +68,15 @@ function StudentEvents() {
             return (
                 <>
                     {data.map((events, index) => (
-                        <div className='Boxs' key={index}>
-                            <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
+                        <div className='BoxsH' key={index}>
                             <div>
-                                <p className='BoxText'>Event Name: {events.EName}</p>
-                                <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
-                                <p className='BoxText'>Point Amount: {events.Points}</p>
-                                <p className='BoxText'>Event Description: {events.EBio}</p>
+                                <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
+                                <div>
+                                    <p className='BoxText EventName'>{events.EName}</p>
+                                    <p className='BoxText'>Time: {getEventsTime(events.DateandTime)}</p>
+                                    <p className='BoxText'>{events.Points} Points</p>
+                                    <p className='BoxText'>{events.EBio}</p>
+                                </div>
                             </div>
                             <button type="button" className='button289' onClick={() => joinEvent(events)}>Join Event!</button>
                         </div>
@@ -90,8 +92,9 @@ function StudentEvents() {
         }
     }
     return (
-        <div id="StudentEvents">
-            <h1 className='Headingg'>Events</h1>
+        <div id="StudentEvents" className="Margin">
+            <h1 className="PageTitle">West-MEC Event Tracker</h1>
+            <h2 className="PageTitle">Events</h2>
             {/* Message to tell the user if they've joined an event or not  */}
             <div id="message"></div>
             {getEvents()}

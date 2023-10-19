@@ -54,16 +54,21 @@ function StudentPoints() {
         }
     }
     return (
-        <div id="StudentHome">
-            <h2 id='leader'>Leaderboard</h2>
-            <h2 id='_points'>Your Points</h2>
-            <div className='Box45' id='Box456'>
-                <p id='notpushinp'>{getPoints()}</p>
-            </div>
-            <div className='Box46' id='Box457'>
-                {setLeaderboard()}
-            </div>
-            
+        <div id="StudentHome" className="Margin">
+            <h1 className="PageTitle">West-MEC Event Tracker</h1>
+            <h2 className="PageTitle">Points and Leaderboard</h2>
+            <div className="box45Div">
+                <div className="box45">
+                    <h2 id='_points'>Your Points</h2>
+                    <p id='notpushinp'>{getPoints()}</p>
+                </div>
+                <div className="box45">
+                    <h2 id='leader'>Leaderboard</h2>
+                    <div className='Box46'>
+                        {setLeaderboard()}
+                    </div>
+                </div>   
+            </div> 
         </div>
     );
 }

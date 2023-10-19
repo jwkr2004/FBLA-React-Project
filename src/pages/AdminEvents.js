@@ -5,6 +5,9 @@ import { useState } from 'react';
 function AdminEvents() {
     const [data, setData] = useState();
     const [search, setSearch] = useState();
+    const [filter, setFilter] = useState("Event Name");
+    const [sortType, setSortType] = useState("Ascending");
+    const [sortBy, setSortBy] = useState("Event Name");
     useEffect(() => {
         //Sends a Get request to the backend Express server to obtain all of the events
         axios
@@ -32,32 +35,106 @@ function AdminEvents() {
         }
         return daysofweek[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear() + ", " + hour + ":" + minutes + " " + moa;
     }
+
+    function sortData(lData) {
+        // console.log(sortType, sortBy);
+        if(sortType !== undefined && sortBy !== undefined) {
+            if(sortType === "Ascending") {
+                if(sortBy === "Point Amount") {
+                    lData.sort((a, b) => {
+                        return a.Points - b.Points;
+                    });
+                }
+                else if(sortBy === "Event Name") {
+                    lData.sort((a, b) => {
+                        let fa = a.EName.toLowerCase(),
+                            fb = b.EName.toLowerCase();
+                        if (fa < fb) {
+                            return -1;
+                        }
+                        if (fa > fb) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+                }
+            }
+            else if(sortType === "Descending") {
+                if(sortBy === "Point Amount") {
+                    lData.sort((a, b) => {
+                        return b.Points - a.Points;
+                    });
+                }
+                else if(sortBy === "Event Name") {
+                    lData.sort((a, b) => {
+                        let fa = a.EName.toLowerCase(),
+                            fb = b.EName.toLowerCase();
+                    
+                        if (fa < fb) {
+                            return 1;
+                        }
+                        if (fa > fb) {
+                            return -1;
+                        }
+                        return 0;
+                    });
+                }
+            }
+            return lData;
+        }
+    }
+
     function getEvents() {
-        //Displays any events that match the searched term if there is a searched term
-        if(search && data) {
-            return(
+        // console.log(data);
+        var lData;
+        if(data !== undefined) {
+            lData = sortData(data);
+        }
+        else {
+            lData = data;
+        }
+        
+        if (search !== undefined && lData !== undefined) {
+            // Displays sorted and searched events
+
+            // console.log(Sort);
+            // console.log(lData);
+            return (
                 <>
-                    {data.map((events, index) => (
-                        (events.EName.toLowerCase().includes(search.toLowerCase())) ? (
-                            <div className='Boxs' key={index} onClick={() => window.open(`/EditEvent?eid=${events._id}`, "_self")}>
-                                <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
-                                <div>
-                                    <p className='BoxText'>Event Name: {events.EName}</p>
-                                    <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
-                                    <p className='BoxText'>Point Amount: {events.Points}</p>
-                                    <p className='BoxText'>Event Description: {events.EBio}</p>
+                    {lData.map((events, index) => (
+                        (filter === "Point Amount") ? (
+                            (String(events["Points"]).includes(search)) ? (
+                                <div className='Boxs' key={index} onClick={() => window.open(`/EditEvent?eid=${events._id}`, "_self")}>
+                                    <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
+                                    <div>
+                                        <p className='BoxText'>Event Name: {events.EName}</p>
+                                        <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
+                                        <p className='BoxText'>Point Amount: {events.Points}</p>
+                                        <p className='BoxText'>Event Description: {events.EBio}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ) : (<></>)
+                            ) : (<></>)
+                        ) : (
+                            (events["EName".replace(/\s+/g, '')].toLowerCase().includes(search.toLowerCase())) ? (
+                                <div className='Boxs' key={index} onClick={() => window.open(`/EditEvent?eid=${events._id}`, "_self")}>
+                                    <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
+                                    <div>
+                                        <p className='BoxText'>Event Name: {events.EName}</p>
+                                        <p className='BoxText'>Time of Event: {getEventsTime(events.DateandTime)}</p>
+                                        <p className='BoxText'>Point Amount: {events.Points}</p>
+                                        <p className='BoxText'>Event Description: {events.EBio}</p>
+                                    </div>
+                                </div>
+                            ) : (<></>)
+                        )
                     ))}
                 </>
-            ) 
+            )
         }
-        //Displays all events if there are no searched terms
-        else if(data){
-            return(
+        else if (!search && lData) {
+            return (
                 <>
-                    {data.map((events, index) => (
+                    {lData.map((events, index) => (
                         <div className='Boxs' key={index} onClick={() => window.open(`/EditEvent?eid=${events._id}`, "_self")}>
                             <img src={events.Image} alt='EventImg' width='100px' height='100px'></img>
                             <div>
@@ -70,21 +147,36 @@ function AdminEvents() {
                     ))}
                 </>
             )
-            
+        }
+        else{
+            return(<div id="message">No Results</div>)
         }
     }
     return (
-        <div className='Admin'>
+        <div className='Admin Margin'>
             {/* Search Bar */}
             <h1 className="PageTitle">West-MEC Event Tracker</h1>
             <h2 className="PageTitle">Events</h2>
             <form className="SearchForm">
-                <input required className='Search2' placeholder='Search by Event Name' onChange={(e) => setSearch(e.target.value)} />
+                {/* Search Bar and DropDown Menu Filter */}
+                <input required className='Search' placeholder={`Search By ${filter}`} onChange={(e) => setSearch(e.target.value)}></input>
+                <select className='Filter' id="filter" onChange={(e) => setFilter(e.target.value)}>
+                    <option value={"Event Name"}>Event Name</option>
+                    <option value={"Point Amount"}>Point Amount</option>
+                </select>
             </form>
             <br></br>
             {/* Add New Event Button */}
             <div className='ButtonsA'>
                 <a href='/AddEvent' className='AdminB'>Add New Event +</a>
+                <select className="AdminB" onChange={(e) => setSortBy(e.target.value)}>
+                    <option value={"Event Name"}>Sort By Event Name</option>
+                    <option value={"Point Amount"}>Sort By Point Amount   </option>
+                </select>
+                <select className="AdminB" onChange={(e) => setSortType(e.target.value)}>
+                    <option value={"Ascending"}>Ascending</option>
+                    <option value={"Descending"}>Descending</option>
+                </select>
             </div>
             {getEvents()}
         </div>

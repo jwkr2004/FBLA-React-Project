@@ -102,7 +102,8 @@ const EditAccount = () => {
   }
   return (
     <div id='EditAccount'>
-      <h1 className="header">Edit Account</h1>
+      <h1 className="PageTitle">West-MEC Event Tracker</h1>
+      <h2 className="PageTitle">Edit Account</h2>
       {/* The Form Where the Admin Puts the New Student Information */}
       <form id="signupForm" className="Form" onSubmit={e => SubmitForm(e)}>
           <div className="FormDiv">

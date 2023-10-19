@@ -26,6 +26,24 @@ const AccountSchema = new mongoose.Schema({
     }
 });
 
+// const PrizeNameSchema = new mongoose.Schema({
+//     prize: {
+//         type: String
+//     },
+//     name: {
+//         type: String
+//     },
+// });
+
+const WinnerSchema = new mongoose.Schema({
+    prize: {
+        type: String
+    },
+    name: {
+        type: String
+    }
+});
+
 const ReportSchema = new mongoose.Schema({
     time: {
         type: Date
@@ -33,6 +51,7 @@ const ReportSchema = new mongoose.Schema({
     accounts:[AccountSchema],
     title: {
         type: String
-    }
+    },
+    winners:[WinnerSchema]
 });
 module.exports = mongoose.model('reports', ReportSchema);

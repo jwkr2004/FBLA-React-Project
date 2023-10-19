@@ -43,8 +43,9 @@ const NewAccount = () => {
     }
   }
   return (
-    <div id='NewAccount'>
-      <h1 className="header">New Account</h1>
+    <div id='NewAccount' className="Margin">
+      <h1 className="PageTitle">West-MEC Event Tracker</h1>
+      <h2 className="PageTitle">New Account</h2>
       {/* The Form Where the Admin Puts the New Student Information */}
       <form id="signupForm" className="Form" onSubmit={e => SubmitForm(e)}>
           <div className="FormDiv">
@@ -62,7 +63,7 @@ const NewAccount = () => {
           <div className="FormDiv">
             <label>Password:</label>
             <div className="passwordDiv">
-              <input id="password" name="password" type="password" onChange={(e) => setPassword(e.target.value)} maxlength={30} required/>
+              <input id="password" name="password" type="password" onChange={(e) => setPassword(e.target.value)} maxLength={30} required/>
               <button className="Button" id="showPassword" type="button" onClick={() => showPassword()}>Show</button>
             </div>
           </div>

@@ -31,10 +31,10 @@ function SetNavBar() {
     useEffect(() => {
         if(user) {
             if (!user.isAdmin) {
-                setBtnArr([{ title: "Home", Link: "/StudentHome" }, { title: "Your Points", Link: "/StudentPoints" }, { title: "Events", Link: "/StudentEvents" }, { title: "Log Out", Link: "/logout" }]);
+                setBtnArr([{ title: "Home", Link: "/StudentHome" }, { title: "Points", Link: "/StudentPoints" }, { title: "Events", Link: "/StudentEvents" }, { title: "Log Out", Link: "/logout" }]);
             }
             else if (user.isAdmin) {
-                setBtnArr([{ title: "Home", Link: "/AdminHome" }, { title: "Student List", Link: "/AdminStudents" }, { title: "Event List", Link: "/AdminEvents" }, { title: "Reports", Link: "/Reports" }, { title: "Verification", Link: "/AdminVerification" }, { title: "New Account", Link: "/NewAccount" }, { title: "Log Out", Link: "/logout" }]);
+                setBtnArr([{ title: "Home", Link: "/AdminHome" }, { title: "Students", Link: "/AdminStudents" }, { title: "Events", Link: "/AdminEvents" }, { title: "Reports", Link: "/Reports" }, { title: "Verification", Link: "/AdminVerification" }, { title: "New Account", Link: "/NewAccount" }, { title: "Log Out", Link: "/logout" }]);
             }
         }
         else {

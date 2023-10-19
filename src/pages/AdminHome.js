@@ -62,7 +62,7 @@ function AdminHome() {
     }, []);
     if(user !== undefined) {
         return (
-            <div id="AdminHome">
+            <div id="AdminHome" className="Margin">
                 <h1 className="PageTitle">West-MEC Event Tracker</h1>
                 <h2 id="head">Welcome, {user}</h2>
                 <div className="ButtonParent">
@@ -92,7 +92,7 @@ function AdminHome() {
     }
     else {
         return (
-            <div id="AdminHome">
+            <div id="AdminHome" className="Margin">
                 <h1 className="PageTitle">West-MEC Event Tracker</h1>
                 <h2 id="head">Welcome, Admin</h2>
                 <div className="ButtonParent">

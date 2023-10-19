@@ -23,6 +23,9 @@ const AccountSchema = new mongoose.Schema({
     },
     events: {
         type: Array
+    },
+    theme: {
+        type: String
     }
 });
 module.exports = mongoose.model('accounts', AccountSchema, 'accounts');
